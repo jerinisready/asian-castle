@@ -126,6 +126,11 @@
   background: var(--color-surface-bright);
 }
 
+.add[data-added] {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+
 @media (min-width: 768px) {
   .cta {
     align-self: auto;

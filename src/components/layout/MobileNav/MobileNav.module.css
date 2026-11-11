@@ -1,81 +1,5 @@
-/* Right-hand sheet. Slides in on open; the global reduced-motion rule removes the slide. */
-.sheet {
-  margin: 0 0 0 auto;
-  padding: 0;
-  width: min(100%, var(--size-sheet));
-  max-width: 100%;
-  height: 100dvh;
-  max-height: 100dvh;
-  border: 0;
-  border-left: var(--border-accent);
-  background: var(--color-surface-container-low);
-  color: var(--color-on-surface);
-  box-shadow: var(--elevation-5);
-  transform: translateX(100%);
-  transition:
-    transform var(--duration-medium) var(--ease-out),
-    overlay var(--duration-medium) allow-discrete,
-    display var(--duration-medium) allow-discrete;
-}
+/* Sheet shell (dialog, backdrop, header, footer) lives in ui/Sheet. */
 
-.sheet[open] {
-  transform: none;
-}
-
-@starting-style {
-  .sheet[open] {
-    transform: translateX(100%);
-  }
-}
-
-.sheet::backdrop {
-  background: var(--surface-scrim);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
-}
-
-.panel {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  padding: 0 var(--gutter) var(--space-xl);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-
-/* Matches the header bar so the close button sits where the toggle was. */
-.top {
-  flex-shrink: 0;
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  border-bottom: var(--border-divider);
-}
-
-.title {
-  color: var(--color-secondary);
-  letter-spacing: var(--tracking-label);
-}
-
-.close {
-  width: var(--size-touch);
-  height: var(--size-touch);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-pill);
-  background: var(--color-surface-container);
-  transition: background-color var(--duration-fast) var(--ease-standard);
-}
-
-.close:hover {
-  background: var(--color-surface-container-high);
-}
-
-/* Links */
 .list {
   display: flex;
   flex-direction: column;
@@ -114,15 +38,8 @@
   background: var(--color-accent);
 }
 
-/* Actions */
-.actions {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.actions .action {
+/* Footer buttons span the sheet. */
+.action {
   width: 100%;
   justify-content: center;
 }

@@ -16,13 +16,26 @@ interface SiteHeaderProps {
   onNavigate?: (id: string) => void
   cartCount: number
   homeHref: string
+  /** Opens the table-order sheet. */
+  onOpenCart?: () => void
+  /** id of the table-order sheet, for aria-controls. */
+  cartSheetId?: string
 }
 
 /**
  * Fixed glass header: brand, capsule nav (from 1280px), reserve CTA, table-order bag,
  * and a navigation sheet toggle below 1280px.
  */
-export function SiteHeader({ site, content, activeId, onNavigate, cartCount, homeHref }: SiteHeaderProps) {
+export function SiteHeader({
+  site,
+  content,
+  activeId,
+  onNavigate,
+  cartCount,
+  homeHref,
+  onOpenCart,
+  cartSheetId,
+}: SiteHeaderProps) {
   const [navOpen, setNavOpen] = useState(false)
   const navSheetId = useId()
   const closeNav = useCallback(() => setNavOpen(false), [])
@@ -63,7 +76,14 @@ export function SiteHeader({ site, content, activeId, onNavigate, cartCount, hom
             <span>{content.reserve.label}</span>
             <Icon name={content.reserve.icon} size="sm" tone="accent" />
           </ButtonLink>
-          <button type="button" className={styles.cart} aria-label={cartLabel}>
+          <button
+            type="button"
+            className={styles.cart}
+            aria-label={cartLabel}
+            aria-haspopup="dialog"
+            aria-controls={cartSheetId}
+            onClick={onOpenCart}
+          >
             <Icon name="shopping_bag" size="xl" tone="accent" />
             {cartCount > 0 && <span className={cx('type-label-sm', styles.cartCount)}>{cartCount}</span>}
           </button>

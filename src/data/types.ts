@@ -24,8 +24,31 @@ export interface WhatsAppAction extends IconLabel {
 }
 
 export interface TableItem {
+  /** Stable id; items with the same id share one order line. Falls back to `name`. */
+  id?: string
   name: string
   price: number
+}
+
+/** Copy for the table order: toast, sheet and WhatsApp message. */
+export interface TableOrderContent {
+  fallbackTitle: string
+  toastMessage: string
+  sheet: {
+    title: string
+    closeLabel: string
+    empty: { icon: IconName; title: string; message: string; action: LinkAction }
+    quantityLabel: string
+    decreaseLabel: string
+    increaseLabel: string
+    removeLabel: string
+    totalLabel: string
+    note: string
+    send: IconLabel
+    clearLabel: string
+    sentNotice: { icon: IconName; title: string; message: string }
+  }
+  whatsappMessage: { greeting: string; totalLabel: string; closing: string }
 }
 
 export interface NavItem {

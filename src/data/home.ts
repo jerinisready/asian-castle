@@ -7,6 +7,7 @@ import type {
   IntegrityContent,
   ProximityContent,
   ReservationContent,
+  TableOrderContent,
   SignatureContent,
 } from './types'
 
@@ -235,9 +236,37 @@ export const reservation: ReservationContent = {
   },
 }
 
-export const tableOrderCopy = {
+export const tableOrderCopy: TableOrderContent = {
   fallbackTitle: 'Item Added',
   toastMessage: 'Added to your table selection',
+  sheet: {
+    title: 'Your Table Order',
+    closeLabel: 'Close table order',
+    empty: {
+      icon: 'restaurant_menu',
+      title: 'Your table is empty',
+      message: 'Add dishes from the menu and they will gather here.',
+      action: { icon: 'menu_book', label: 'Explore the Menu', href: `#${sectionIds.menu}` },
+    },
+    quantityLabel: 'Quantity',
+    decreaseLabel: 'One fewer',
+    increaseLabel: 'One more',
+    removeLabel: 'Remove',
+    totalLabel: 'Estimated total',
+    note: 'Prices in AED. Your order is sent as a WhatsApp message; we confirm by reply.',
+    send: { icon: 'send', label: 'Send Order on WhatsApp' },
+    clearLabel: 'Clear order',
+    sentNotice: {
+      icon: 'chat',
+      title: 'Your order is ready in WhatsApp',
+      message: 'Press send in WhatsApp to share it with our team. Nothing is ordered until we reply.',
+    },
+  },
+  whatsappMessage: {
+    greeting: 'Salam Asian Castle, I would like to order:',
+    totalLabel: 'Estimated total',
+    closing: 'Please confirm availability and timing. Thank you.',
+  },
 }
 
 export const community: CommunityContent = {

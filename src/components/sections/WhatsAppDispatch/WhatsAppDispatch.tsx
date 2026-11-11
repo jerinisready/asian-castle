@@ -1,6 +1,7 @@
 import type { DispatchContent, TableItem } from '../../../data/types'
 import { cx } from '../../../utils/cx'
 import { whatsappLink } from '../../../utils/links'
+import { AddButton } from '../../ui/AddButton/AddButton'
 import { ButtonLink } from '../../ui/Button/ButtonLink'
 import { Eyebrow } from '../../ui/Eyebrow/Eyebrow'
 import { Icon } from '../../ui/Icon/Icon'
@@ -72,14 +73,11 @@ export function WhatsAppDispatch({ id, content, whatsappNumber, onAddItem }: Wha
                   <span>{offer.action.label}</span>
                 </ButtonLink>
                 {offer.addItem && (
-                  <button
-                    type="button"
+                  <AddButton
                     className={styles.add}
-                    aria-label={`Add ${offer.addItem.name} to your table order`}
-                    onClick={() => offer.addItem && onAddItem(offer.addItem)}
-                  >
-                    <Icon name="add" size="lg" />
-                  </button>
+                    label={`Add ${offer.addItem.name} to your table order`}
+                    onAdd={() => offer.addItem && onAddItem({ id: offer.id, ...offer.addItem })}
+                  />
                 )}
               </div>
             </article>

@@ -1,6 +1,7 @@
 import type { Dish } from '../../../data/types'
 import { cx } from '../../../utils/cx'
 import { formatPrice } from '../../../utils/links'
+import { AddButton } from '../AddButton/AddButton'
 import { CoverImage } from '../CoverImage/CoverImage'
 import { Icon } from '../Icon/Icon'
 import styles from './DishCard.module.css'
@@ -45,14 +46,11 @@ export function DishCard({ dish, variant = 'registry', onAdd }: DishCardProps) {
 
         <div className={styles.footer}>
           <span className={cx('type-label-sm', styles.note)}>{dish.note}</span>
-          <button
-            type="button"
+          <AddButton
             className={styles.add}
-            onClick={() => onAdd(dish)}
-            aria-label={`Add ${dish.name} to your table order`}
-          >
-            <Icon name="add" size="lg" />
-          </button>
+            label={`Add ${dish.name} to your table order`}
+            onAdd={() => onAdd(dish)}
+          />
         </div>
       </div>
     </article>

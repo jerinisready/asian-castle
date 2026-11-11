@@ -145,7 +145,8 @@
   transition-timing-function: var(--ease-standard);
 }
 
-.add:hover {
+.add:hover,
+.add[data-added] {
   background: var(--color-secondary);
   color: var(--color-on-secondary);
 }

@@ -38,6 +38,12 @@ export const easings = {
   inOut: [0.65, 0, 0.35, 1],
 } as const
 
+/** How long confirmation feedback stays visible, in ms. */
+export const feedback = {
+  /** "Added" check on an add button. */
+  addedMs: 1600,
+} as const
+
 /** Interaction values. Mirrors --hover-zoom / --press-scale. */
 export const interaction = {
   hoverZoom: 1.05,
