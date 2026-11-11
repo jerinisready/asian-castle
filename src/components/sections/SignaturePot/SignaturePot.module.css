@@ -152,6 +152,52 @@
   padding-top: var(--space-xs);
 }
 
+/* Sides: shown inline under the actions when the toggle is pressed. */
+.sidesToggle[aria-expanded='true'] {
+  background: var(--color-surface-bright);
+  color: var(--color-on-surface);
+}
+
+.sides {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-container);
+}
+
+.sides[hidden] {
+  display: none;
+}
+
+.sidesIntro {
+  color: var(--color-on-surface);
+}
+
+.sidesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  color: var(--color-on-surface-variant);
+}
+
+.sidesItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.sidesItem::before {
+  content: '';
+  flex-shrink: 0;
+  width: var(--space-xs);
+  height: var(--space-xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-secondary);
+  transform: translateY(calc(-1 * var(--space-2xs)));
+}
+
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));

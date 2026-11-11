@@ -39,7 +39,11 @@ export const hero: HeroContent = {
     label: `WhatsApp Ring: ${site.phone.display}`,
     message: 'Salam Asian Castle I would like to reserve a table',
   },
-  partners: { label: 'Order Direct / 1-Tap:', items: ['Talabat Fine', 'Keeta', 'Noon Food', 'Smiles UAE'] },
+  // VERIFY BEFORE LAUNCH: add each platform's Asian Castle listing URL as `href`; until then chips are plain labels.
+  partners: {
+    label: 'Order Direct / 1-Tap:',
+    items: [{ label: 'Talabat Fine' }, { label: 'Keeta' }, { label: 'Noon Food' }, { label: 'Smiles UAE' }],
+  },
   showcase: {
     image: images.diningSanctuary,
     crestIcon: 'villa',
@@ -91,8 +95,13 @@ export const signature: SignatureContent = {
   sidesAction: {
     icon: 'menu_book',
     label: 'Accompanying Sides Included',
-    message:
-      'Each Malabar Dum Biryani pot is served complete with:\n• Fresh cooling cucumber-onion raita\n• Tangy Malabar spiced date pickle\n• Crisp papadum curls\n• Roasted chicken gravy dip (Salna)',
+    intro: 'Each Malabar Dum Biryani pot is served complete with:',
+    items: [
+      'Fresh cooling cucumber-onion raita',
+      'Tangy Malabar spiced date pickle',
+      'Crisp papadum curls',
+      'Roasted chicken gravy dip (Salna)',
+    ],
   },
 }
 

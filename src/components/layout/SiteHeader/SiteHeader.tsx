@@ -87,9 +87,6 @@ export function SiteHeader({
             <Icon name="shopping_bag" size="xl" tone="accent" />
             {cartCount > 0 && <span className={cx('type-label-sm', styles.cartCount)}>{cartCount}</span>}
           </button>
-          <span className={styles.avatar} role="img" aria-label={content.accountLabel}>
-            <Icon name="person" size="md" />
-          </span>
           <button
             type="button"
             className={styles.menuToggle}
