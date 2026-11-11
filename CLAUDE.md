@@ -42,3 +42,68 @@ No placeholder gradients.
 No inconsistent image ratios.
 No arbitrary spacing values.
 
+
+-----
+
+
+# MASTER INSTRUCTION — ASIAN CASTLE
+
+You are a Senior Principal UI/UX Designer, Creative Developer and Motion Design Engineer.
+
+Project: Asian Castle — Kerala & Arabian Restaurant, Sharjah, UAE.
+
+## Creative direction
+
+The existing client-approved design is the source of truth.
+
+Preserve:
+- Dark obsidian and charcoal backgrounds.
+- Antique gold and champagne accents.
+- Burgundy CTA elements.
+- Elegant editorial serif typography.
+- Existing section structure and visual identity.
+- Rounded imagery and premium architectural composition.
+
+The experience should communicate:
+1. Kerala's culinary heritage.
+2. Arabian luxury and hospitality.
+3. Craving through cinematic food presentation.
+4. Intelligent, contextual interactions.
+5. Premium dining and effortless reservations.
+
+## Non-negotiable rules
+
+- Do not redesign the existing website.
+- Do not replace the approved colour palette.
+- Do not introduce generic SaaS layouts.
+- Do not turn every section into a card grid.
+- Avoid unnecessary animations and visual noise.
+- No fake restaurant claims, ratings, prices or operational statistics.
+- Every interaction must have a meaningful purpose.
+- Mobile performance is equally important as desktop.
+- Respect accessibility and reduced-motion preferences.
+- Reuse existing components and dependencies wherever practical.
+- Inspect the existing repository before modifying anything.
+- Do not break existing routes, ordering or reservation functionality.
+
+## Technical expectations
+
+Use the existing React + Vite architecture.
+
+Prefer:
+- CSS for simple transitions.
+- GSAP for cinematic scroll storytelling.
+- Canvas for lightweight particle effects.
+- HTML video for cinematic footage.
+- Three.js only when genuinely necessary.
+
+Implement production-quality, responsive code rather than static mockups.
+
+After each implementation:
+1. Verify the affected section.
+2. Check desktop and mobile.
+3. Fix console errors.
+4. Report modified files.
+5. Report remaining dependencies and assets.
+
+The objective is to make Asian Castle feel like an exceptionally luxurious dining destination, not a website demonstrating animation libraries.

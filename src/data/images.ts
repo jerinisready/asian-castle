@@ -1,3 +1,4 @@
+import logo from '../assets/images/brand/logo.png'
 import type { ImageAsset } from './types'
 
 /*
@@ -9,11 +10,8 @@ const stitch = (id: string) => `https://lh3.googleusercontent.com/aida-public/${
 
 export const images = {
   logo: {
-    src: stitch(
-      'AB6AXuApBzzBQPYgQLx_tpN6IQYmjWlAV8rsMZJCyg6JArqIi2r-31y_XFGGUGJcXnkKkZtpOwRGY0zG_CZU8sq9HUjdqJ5S38KBYdHqNoM5sC_7TtpoWiXNU7d_U3nZlaRX0Ba7e6srKsHKKUkZa3_4GfN8eGSQkIgH_Gx19Yhs6uIkM8m8KvCz7wlHi_CDZJZudN7VpdwZJkPLxYQckn9xRxuEDsvp5Ujr2lyrwCZ7XcEr',
-    ),
-    alt: 'Asian Castle Restaurant Logo',
-    placeholder: true,
+    src: logo,
+    alt: 'Asian Castle Restaurant',
   },
   diningSanctuary: {
     src: stitch(
