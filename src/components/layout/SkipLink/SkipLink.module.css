@@ -1,0 +1,21 @@
+.skip {
+  position: fixed;
+  top: var(--inset-md);
+  left: var(--inset-md);
+  z-index: var(--z-skip-link);
+  min-height: var(--size-touch);
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+  box-shadow: var(--elevation-4);
+  transform: translateY(calc(-100% - 2 * var(--inset-md)));
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip:focus,
+.skip:focus-visible {
+  transform: none;
+}

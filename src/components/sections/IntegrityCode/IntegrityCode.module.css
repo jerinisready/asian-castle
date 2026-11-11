@@ -32,8 +32,8 @@
   flex-direction: column;
   gap: var(--space-xs);
   padding: var(--space-md);
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--color-surface-container) 70%, transparent);
+  border-radius: var(--radius-panel);
+  background: var(--surface-tint);
   box-shadow: var(--shadow-sm);
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
@@ -43,14 +43,14 @@
 }
 
 .badgeIcon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--size-control-lg);
+  height: var(--size-control-lg);
   margin-bottom: var(--space-xs);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-secondary-container) 50%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-accent-tint);
   color: var(--color-secondary);
 }
 
@@ -60,7 +60,7 @@
 
 .badgeTitle {
   color: var(--color-on-surface);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .badgeDescription {

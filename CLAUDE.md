@@ -11,8 +11,10 @@ Dark charcoal, antique gold, warm ivory.
 Elegant serif headings, clean sans-serif body.
 
 
-Next.js static export on GitHub Pages. Mobile first. Data: data/menu.js, lib/site.js.
-Brand: leaf #0F2B21, gold #C8A24A, rice #ECE4D2. Fonts: Cormorant Garamond + Hanken Grotesk.
+Vite static build on GitHub Pages. Mobile first. Data: src/data/*.ts (site.ts, home.ts, dishes.ts, images.ts; types in types.ts).
+Brand: obsidian #141110, warm charcoal #211C19, antique gold #C6A265 (use sparingly), champagne #E8CCA0, burgundy #641D2A, ivory #F1E8DF.
+Fonts: Cormorant Garamond (headings, dish titles) + Manrope (interface, body) + Cinzel (heritage labels only).
+Tokens: src/design-system/tokens.css (source of truth) and tokens.ts (JS mirror). Components use tokens, never raw values.
 Rules: minimal diffs, no new dependencies without asking, test at 375/390/768/1440.
 
 

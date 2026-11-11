@@ -1,22 +1,37 @@
+/*
+ * Button variants
+ *   primary   burgundy fill, ivory label; hover adds a soft inner gold glow
+ *   secondary lifted charcoal, champagne label
+ *   ghost     transparent with a gold hairline (restrained; one per view)
+ *   quiet     low-emphasis utility
+ *   whatsapp  WhatsApp brand colours
+ * All variants: press scales to --press-scale; focus uses the global gold ring.
+ */
 .button {
+  composes: touch-target from global;
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   transition-property: color, background-color, border-color, box-shadow, transform;
   transition-duration: var(--duration-fast);
   transition-timing-function: var(--ease-standard);
 }
 
+.button:active {
+  transform: scale(var(--press-scale));
+}
+
 /* Variants */
 .primary {
   background: var(--color-primary-container);
-  color: var(--color-on-surface);
-  box-shadow: var(--shadow-xl);
+  color: var(--color-on-primary-container);
+  box-shadow: var(--elevation-4);
 }
 
 .primary:hover {
-  background: color-mix(in srgb, var(--color-primary-container) 85%, transparent);
+  background: var(--color-primary-container-hover);
+  box-shadow: var(--elevation-4), var(--glow-primary-hover);
 }
 
 .secondary {
@@ -27,6 +42,17 @@
 .secondary:hover {
   background: var(--color-surface-bright);
   color: var(--color-on-surface);
+}
+
+.ghost {
+  background: transparent;
+  border: var(--border-width) solid var(--color-border-accent-strong);
+  color: var(--color-on-surface);
+}
+
+.ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-secondary);
 }
 
 .quiet {
@@ -41,8 +67,8 @@
 .whatsapp {
   background: var(--color-whatsapp);
   color: var(--color-on-whatsapp);
-  font-weight: 700;
-  box-shadow: var(--shadow-xl);
+  font-weight: var(--weight-bold);
+  box-shadow: var(--elevation-4);
 }
 
 .whatsapp:hover {

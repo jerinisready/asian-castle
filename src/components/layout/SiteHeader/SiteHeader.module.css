@@ -1,8 +1,8 @@
 .header {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 50;
-  background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  z-index: var(--z-header);
+  background: var(--surface-header);
   backdrop-filter: blur(var(--blur-xl));
   -webkit-backdrop-filter: blur(var(--blur-xl));
   box-shadow: var(--shadow-header);
@@ -20,6 +20,7 @@
 
 /* Brand */
 .brand {
+  composes: touch-target from global;
   display: flex;
   align-items: center;
   gap: var(--space-md);
@@ -28,10 +29,10 @@
 
 .logo {
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--size-control-lg);
+  height: var(--size-control-lg);
   object-fit: contain;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
 }
 
 .brandText {
@@ -42,15 +43,18 @@
 
 .brandName {
   color: var(--color-secondary);
-  letter-spacing: 0.025em;
-  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-none);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .brandTagline {
   margin-top: var(--space-xs);
-  color: color-mix(in srgb, var(--color-secondary) 70%, transparent);
+  color: var(--color-secondary-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-caps);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -63,7 +67,7 @@
 
 .navLink {
   padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   color: var(--color-on-surface-variant);
   transition: all var(--duration-medium) var(--ease-standard);
 }
@@ -93,47 +97,52 @@
 }
 
 .actions .reserve:hover {
-  background: color-mix(in srgb, var(--color-primary-container) 90%, transparent);
+  background: var(--color-primary-container-hover);
 }
 
-.cart {
+/* Icon-only header buttons: table-order bag and the navigation sheet toggle */
+.cart,
+.menuToggle {
   position: relative;
+  width: var(--size-touch);
+  height: var(--size-touch);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-xs);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   background: var(--color-surface-container);
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
-.cart:hover {
+.cart:hover,
+.menuToggle:hover {
   background: var(--color-surface-container-high);
 }
 
 .cartCount {
   position: absolute;
-  top: -0.25rem;
-  right: -0.25rem;
-  width: 1.25rem;
-  height: 1.25rem;
+  top: calc(-1 * var(--space-xs));
+  right: calc(-1 * var(--space-xs));
+  width: var(--size-counter);
+  height: var(--size-counter);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   background: var(--color-secondary-container);
   color: var(--color-secondary);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
+/* Decorative (no account feature yet); hidden on phones to keep the brand on one line. */
 .avatar {
-  width: 2rem;
-  height: 2rem;
+  width: var(--size-control-sm);
+  height: var(--size-control-sm);
   margin-left: var(--space-xs);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   background: var(--color-primary);
   color: var(--color-on-primary);
 }
@@ -146,6 +155,10 @@
   .actions .reserve {
     display: inline-flex;
   }
+
+  .avatar {
+    display: flex;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -154,8 +167,12 @@
     align-items: center;
     gap: var(--space-xs);
     padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-pill);
     background: var(--color-surface-container-low);
     box-shadow: var(--shadow-nav);
+  }
+
+  .menuToggle {
+    display: none;
   }
 }

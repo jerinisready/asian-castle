@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   color: var(--color-secondary);
   white-space: nowrap;
 }
@@ -16,6 +16,7 @@
 }
 
 .interactive {
+  composes: touch-target from global;
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 

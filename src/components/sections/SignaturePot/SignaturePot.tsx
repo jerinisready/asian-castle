@@ -10,16 +10,18 @@ import { Section } from '../../ui/Section/Section'
 import styles from './SignaturePot.module.css'
 
 interface SignaturePotProps {
+  /** Anchor id for in-page navigation. */
+  id?: string
   content: SignatureContent
   onAddItem: (item: TableItem) => void
 }
 
 /** The house biryani: steaming pot on one side, its story and specs on the other. */
-export function SignaturePot({ content, onAddItem }: SignaturePotProps) {
+export function SignaturePot({ id, content, onAddItem }: SignaturePotProps) {
   const { panel, title, specs, addAction, sidesAction } = content
 
   return (
-    <Section tone="surface" className={styles.section} aria-labelledby="signature-title">
+    <Section id={id} tone="surface" className={styles.section} aria-labelledby="signature-title">
       <Container className={styles.grid}>
         <div className={styles.mediaColumn}>
           <figure className={styles.frame}>
@@ -29,7 +31,7 @@ export function SignaturePot({ content, onAddItem }: SignaturePotProps) {
             </div>
             <figcaption className={styles.panel}>
               <span className={styles.panelMain}>
-                <Icon name={panel.icon} size={22} tone="accent" />
+                <Icon name={panel.icon} size="xl" tone="accent" />
                 <span className={styles.panelText}>
                   <span className={cx('type-label-sm', styles.panelTitle)}>{panel.title}</span>
                   <span className={cx('type-body-sm', styles.panelSubtitle)}>{panel.subtitle}</span>
@@ -41,7 +43,7 @@ export function SignaturePot({ content, onAddItem }: SignaturePotProps) {
         </div>
 
         <div className={styles.story}>
-          <Eyebrow icon={content.eyebrow.icon} iconSize={18}>
+          <Eyebrow icon={content.eyebrow.icon} iconSize="md">
             {content.eyebrow.label}
           </Eyebrow>
           <h2 id="signature-title" className={cx('type-headline-lg', styles.title)}>
@@ -53,7 +55,7 @@ export function SignaturePot({ content, onAddItem }: SignaturePotProps) {
           <ul className={styles.specs}>
             {specs.map((spec) => (
               <li key={spec.title} className={styles.spec}>
-                <Icon name={spec.icon} size={22} tone="accent" className={styles.specIcon} />
+                <Icon name={spec.icon} size="xl" tone="accent" className={styles.specIcon} />
                 <span className={styles.specText}>
                   <span className={cx('type-label-md', styles.specTitle)}>{spec.title}</span>
                   <span className={cx('type-body-sm', styles.specDescription)}>{spec.description}</span>
@@ -64,11 +66,11 @@ export function SignaturePot({ content, onAddItem }: SignaturePotProps) {
 
           <div className={styles.actions}>
             <Button size="lg" onClick={() => onAddItem(addAction.item)}>
-              <Icon name={addAction.icon} size={18} tone="accent" />
+              <Icon name={addAction.icon} size="md" tone="accent" />
               <span>{addAction.label}</span>
             </Button>
             <Button variant="secondary" onClick={() => window.alert(sidesAction.message)}>
-              <Icon name={sidesAction.icon} size={18} />
+              <Icon name={sidesAction.icon} size="md" />
               <span>{sidesAction.label}</span>
             </Button>
           </div>

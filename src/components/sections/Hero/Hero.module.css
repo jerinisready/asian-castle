@@ -36,7 +36,7 @@
 .glowBurgundy,
 .glowBrass {
   position: absolute;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   filter: blur(var(--blur-3xl));
   pointer-events: none;
 }
@@ -60,7 +60,7 @@
 /* Layout */
 .grid {
   position: relative;
-  z-index: 10;
+  z-index: var(--z-content);
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
@@ -90,8 +90,8 @@
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-surface-container-high) 80%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass-raised);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
   box-shadow: var(--shadow-md);
@@ -99,7 +99,7 @@
 
 .pillText {
   color: var(--color-secondary);
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-caps);
 }
 
 .headline {
@@ -109,8 +109,8 @@
 
 .title {
   color: var(--color-on-surface);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
 }
 
 .titleAccent {
@@ -119,11 +119,11 @@
 }
 
 .rule {
-  width: 6rem;
-  height: 0.25rem;
+  width: var(--size-rule-width);
+  height: var(--size-rule-weight);
   margin-top: var(--space-sm);
-  border-radius: var(--radius-full);
-  background: linear-gradient(to right, var(--color-secondary), var(--color-primary), transparent);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
 }
 
 /* Facts */
@@ -138,8 +138,8 @@
 .parking {
   display: flex;
   align-items: center;
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--color-surface-container) 70%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-tint);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
   box-shadow: var(--shadow-sm);
@@ -152,13 +152,13 @@
 
 .metricIcon {
   flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: var(--size-control-md);
+  height: var(--size-control-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-secondary-container) 60%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-accent-tint);
 }
 
 .metricText {
@@ -169,7 +169,7 @@
 
 .metricValue {
   color: var(--color-secondary);
-  line-height: 1;
+  line-height: var(--leading-none);
 }
 
 .metricLabel {
@@ -184,6 +184,7 @@
 }
 
 .parking {
+  composes: touch-target from global;
   justify-content: space-between;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-sm);
@@ -203,13 +204,13 @@
 }
 
 .parkingIcon {
-  width: 2rem;
-  height: 2rem;
+  width: var(--size-control-sm);
+  height: var(--size-control-sm);
 }
 
 .parkingTitle {
   color: var(--color-on-surface);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -221,8 +222,8 @@
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-2xs) var(--space-sm);
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-secondary-container) 50%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-accent-tint);
   color: var(--color-secondary);
 }
 
@@ -248,7 +249,7 @@
 }
 
 .actions .menuButton {
-  background: color-mix(in srgb, var(--color-surface-container-high) 90%, transparent);
+  background: var(--surface-glass-raised);
   box-shadow: var(--shadow-md);
 }
 
@@ -282,14 +283,14 @@
   max-width: 420px;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-radius: var(--radius-arch-top) var(--radius-arch-top) var(--radius) var(--radius);
+  border-radius: var(--radius-arch-top) var(--radius-arch-top) var(--radius-card) var(--radius-card);
   background: var(--color-surface-container);
   box-shadow: var(--shadow-2xl);
   transition: transform var(--duration-slow) var(--ease-standard);
 }
 
 .arch:hover {
-  transform: translateY(-0.25rem);
+  transform: translateY(var(--hover-lift));
 }
 
 .archImage {
@@ -297,7 +298,7 @@
 }
 
 .arch:hover .archImage {
-  transform: scale(1.05);
+  transform: scale(var(--hover-zoom));
 }
 
 .archShade {
@@ -313,7 +314,7 @@
 
 .crest {
   position: absolute;
-  top: 1.5rem;
+  top: var(--inset-lg);
   inset-inline: 0;
   display: flex;
   justify-content: center;
@@ -321,13 +322,13 @@
 }
 
 .crestBadge {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: var(--size-control-2xl);
+  height: var(--size-control-2xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-surface-dim) 80%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
   box-shadow: var(--shadow-lg);
@@ -335,15 +336,15 @@
 
 .status {
   position: absolute;
-  bottom: 1rem;
-  inset-inline: 1rem;
+  bottom: var(--inset-md);
+  inset-inline: var(--inset-md);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-sm);
   padding: var(--space-sm);
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--color-surface-container-lowest) 80%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass-deep);
   backdrop-filter: blur(var(--blur-xl));
   -webkit-backdrop-filter: blur(var(--blur-xl));
   box-shadow: var(--shadow-xl);
@@ -358,11 +359,11 @@
 
 .liveDot {
   flex-shrink: 0;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: var(--radius-full);
+  width: var(--size-dot);
+  height: var(--size-dot);
+  border-radius: var(--radius-pill);
   background: var(--color-secondary);
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse var(--duration-ambient-pulse) cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .statusText {
@@ -373,7 +374,7 @@
 .statusTitle {
   color: var(--color-secondary);
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .statusSubtitle {
@@ -389,33 +390,33 @@
 }
 
 .statusTimeText {
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 /* Floating rating */
 .rating {
   position: absolute;
-  bottom: -1.5rem;
-  left: -1.5rem;
+  bottom: calc(-1 * var(--inset-lg));
+  left: calc(-1 * var(--inset-lg));
   display: none;
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-sm);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--color-surface-container-high) 90%, transparent);
+  border-radius: var(--radius-card);
+  background: var(--surface-glass-raised);
   backdrop-filter: blur(var(--blur-xl));
   -webkit-backdrop-filter: blur(var(--blur-xl));
   box-shadow: var(--shadow-2xl);
-  animation: bounce 4s infinite;
+  animation: bounce var(--duration-ambient-float) infinite;
 }
 
 .ratingIcon {
-  width: 3rem;
-  height: 3rem;
+  width: var(--size-control-xl);
+  height: var(--size-control-xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-pill);
   background: var(--color-primary-container);
   color: var(--color-secondary);
 }
@@ -433,8 +434,8 @@
 }
 
 .ratingValue {
-  line-height: 1;
-  font-weight: 700;
+  line-height: var(--leading-none);
+  font-weight: var(--weight-bold);
 }
 
 .ratingLabel {

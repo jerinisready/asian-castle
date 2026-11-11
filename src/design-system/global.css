@@ -24,6 +24,7 @@ body {
   background: var(--color-background);
   color: var(--color-on-surface);
   font-family: var(--font-sans);
+  font-optical-sizing: auto;
   overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -97,8 +98,37 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 3px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/*
+ * Enlarges the tappable area to at least --size-touch without changing layout.
+ * Use from a CSS Module with `composes: touch-target from global;`.
+ */
+.touch-target {
+  position: relative;
+}
+
+.touch-target::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--size-touch));
+  height: max(100%, var(--size-touch));
+  transform: translate(-50%, -50%);
+}
+
+/* No background scrolling behind a modal sheet. */
+html:has(dialog:modal) {
+  overflow: hidden;
+}
+
+button:disabled,
+[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 ::selection {
@@ -119,6 +149,7 @@ button {
   word-wrap: normal;
   direction: ltr;
   font-feature-settings: 'liga';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   -webkit-font-smoothing: antialiased;
   user-select: none;
 }

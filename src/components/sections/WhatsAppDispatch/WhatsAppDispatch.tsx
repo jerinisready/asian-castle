@@ -31,7 +31,7 @@ export function WhatsAppDispatch({ id, content, whatsappNumber, onAddItem }: Wha
               external
               className={styles.cta}
             >
-              <Icon name={content.cta.icon} size={20} />
+              <Icon name={content.cta.icon} size="lg" />
               <span>{content.cta.label}</span>
             </ButtonLink>
           }
@@ -68,7 +68,7 @@ export function WhatsAppDispatch({ id, content, whatsappNumber, onAddItem }: Wha
                   external
                   className={styles.offerCta}
                 >
-                  <Icon name={offer.action.icon} size={18} tone="accent" />
+                  <Icon name={offer.action.icon} size="md" tone="accent" />
                   <span>{offer.action.label}</span>
                 </ButtonLink>
                 {offer.addItem && (
@@ -78,7 +78,7 @@ export function WhatsAppDispatch({ id, content, whatsappNumber, onAddItem }: Wha
                     aria-label={`Add ${offer.addItem.name} to your table order`}
                     onClick={() => offer.addItem && onAddItem(offer.addItem)}
                   >
-                    <Icon name="add" size={20} />
+                    <Icon name="add" size="lg" />
                   </button>
                 )}
               </div>

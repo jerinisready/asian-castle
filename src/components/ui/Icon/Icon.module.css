@@ -1,5 +1,5 @@
 .icon {
-  font-size: var(--icon-size, 24px);
+  font-size: var(--icon-size, var(--icon-2xl));
   flex-shrink: 0;
 }
 
@@ -7,8 +7,14 @@
   color: inherit;
 }
 
+/* Champagne: the default accent for icons. */
 .accent {
   color: var(--color-secondary);
+}
+
+/* Antique gold: reserve for heritage marks and active states. */
+.gold {
+  color: var(--color-accent);
 }
 
 .muted {

@@ -23,7 +23,7 @@ export function DishCard({ dish, variant = 'registry', onAdd }: DishCardProps) {
       <div className={styles.media}>
         <CoverImage image={dish.image} className={styles.image} />
         <span className={cx('type-label-sm', styles.tag)}>
-          {dish.tag.icon && <Icon name={dish.tag.icon} size={14} />}
+          {dish.tag.icon && <Icon name={dish.tag.icon} size="xs" />}
           <span>{dish.tag.label}</span>
         </span>
         {dish.highlight && (
@@ -51,7 +51,7 @@ export function DishCard({ dish, variant = 'registry', onAdd }: DishCardProps) {
             onClick={() => onAdd(dish)}
             aria-label={`Add ${dish.name} to your table order`}
           >
-            <Icon name="add" size={20} />
+            <Icon name="add" size="lg" />
           </button>
         </div>
       </div>

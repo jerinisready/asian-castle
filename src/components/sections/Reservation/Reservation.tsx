@@ -1,7 +1,10 @@
-import { useId, type FormEvent, type ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import type { ReservationContent } from '../../../data/types'
 import { cx } from '../../../utils/cx'
+import { whatsappLink } from '../../../utils/links'
+import { buildReservationMessage, readReservationForm, todayInTimeZone } from '../../../utils/reservation'
 import { Button } from '../../ui/Button/Button'
+import { ButtonLink } from '../../ui/Button/ButtonLink'
 import { Eyebrow } from '../../ui/Eyebrow/Eyebrow'
 import { Icon } from '../../ui/Icon/Icon'
 import { Container } from '../../ui/Section/Container'
@@ -13,22 +16,42 @@ interface ReservationProps {
   id: string
   formId: string
   content: ReservationContent
+  /** Digits only, with country code. The request is sent to this WhatsApp number. */
+  whatsappNumber: string
+  /** Restaurant time zone; dates before today there cannot be chosen. */
+  timeZone: string
   /** Rendered inside the panel, below the form (e.g. the community block). */
   children?: ReactNode
 }
 
 /**
- * Table booking panel.
- * No backend yet: submitting shows the design's confirmation message and resets the form.
+ * Table booking panel. There is no booking backend: submitting opens WhatsApp with the
+ * request prefilled, and the guest sends it. Nothing is stored or sent by the site.
+ * The confirmation says so honestly; the table is confirmed by the restaurant's reply.
  */
-export function Reservation({ id, formId, content, children }: ReservationProps) {
+export function Reservation({ id, formId, content, whatsappNumber, timeZone, children }: ReservationProps) {
   const fieldId = useId()
   const { fields } = content
+  const [minDate] = useState(() => todayInTimeZone(timeZone))
+  /** WhatsApp link for the last request, kept so the guest can reopen it. */
+  const [requestHref, setRequestHref] = useState<string | null>(null)
+  const confirmationRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (requestHref) confirmationRef.current?.focus()
+  }, [requestHref])
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    window.alert(content.successMessage)
-    event.currentTarget.reset()
+    const request = readReservationForm(event.currentTarget)
+    const href = whatsappLink(whatsappNumber, buildReservationMessage(request, content.whatsappMessage))
+    window.open(href, '_blank', 'noopener,noreferrer')
+    setRequestHref(href)
+  }
+
+  // Any edit makes the prepared request stale; the guest submits again to refresh it.
+  const handleChange = () => {
+    if (requestHref) setRequestHref(null)
   }
 
   return (
@@ -39,7 +62,7 @@ export function Reservation({ id, formId, content, children }: ReservationProps)
           className={styles.header}
           aside={
             <p className={cx('type-label-sm', styles.badge)}>
-              <Icon name={content.badge.icon} size={18} />
+              <Icon name={content.badge.icon} size="md" />
               <span>{content.badge.label}</span>
             </p>
           }
@@ -50,7 +73,7 @@ export function Reservation({ id, formId, content, children }: ReservationProps)
           </h2>
         </SectionHeader>
 
-        <form id={formId} className={styles.form} onSubmit={handleSubmit}>
+        <form id={formId} className={styles.form} onSubmit={handleSubmit} onChange={handleChange}>
           <div className={styles.field}>
             <label htmlFor={`${fieldId}-name`} className={cx('type-label-sm', styles.label)}>
               {fields.name.label}
@@ -98,6 +121,7 @@ export function Reservation({ id, formId, content, children }: ReservationProps)
               name="date"
               type="date"
               required
+              min={minDate}
               className={cx('type-body-sm', styles.control)}
             />
           </div>
@@ -128,15 +152,29 @@ export function Reservation({ id, formId, content, children }: ReservationProps)
 
           <div className={styles.formFooter}>
             <p className={cx('type-label-sm', styles.note)}>
-              <Icon name={content.note.icon} size={18} tone="accent" />
+              <Icon name={content.note.icon} size="md" tone="accent" />
               <span>{content.note.label}</span>
             </p>
-            <Button type="submit" size="xl">
+            <Button type="submit" size="xl" className={styles.submit}>
               <span>{content.submit.label}</span>
-              <Icon name={content.submit.icon} size={18} tone="accent" />
+              <Icon name={content.submit.icon} size="md" tone="accent" />
             </Button>
           </div>
         </form>
+
+        {requestHref && (
+          <div ref={confirmationRef} tabIndex={-1} role="status" className={styles.confirmation}>
+            <Icon name={content.confirmation.icon} size="xl" tone="gold" />
+            <div className={styles.confirmationText}>
+              <p className={cx('type-label-md', styles.confirmationTitle)}>{content.confirmation.title}</p>
+              <p className={cx('type-body-sm', styles.confirmationMessage)}>{content.confirmation.message}</p>
+            </div>
+            <ButtonLink href={requestHref} variant="ghost" external>
+              <Icon name="open_in_new" size="sm" />
+              <span>{content.confirmation.reopenLabel}</span>
+            </ButtonLink>
+          </div>
+        )}
 
         {children}
       </Container>

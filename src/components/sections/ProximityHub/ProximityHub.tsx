@@ -9,19 +9,21 @@ import { Section } from '../../ui/Section/Section'
 import styles from './ProximityHub.module.css'
 
 interface ProximityHubProps {
+  /** Anchor id for in-page navigation. */
+  id?: string
   content: ProximityContent
   parkingMapUrl: string
 }
 
 /** Delivery estimate by distance, plus the restaurant's location and parking. */
-export function ProximityHub({ content, parkingMapUrl }: ProximityHubProps) {
+export function ProximityHub({ id, content, parkingMapUrl }: ProximityHubProps) {
   const { distance, labels, location, parking } = content
   const [distanceKm, setDistanceKm] = useState(distance.initial)
   const estimate = estimateDelivery(distanceKm, content.tiers)
   const sliderId = useId()
 
   return (
-    <Section tone="low" spacing="xl" className={styles.section} aria-labelledby="proximity-title">
+    <Section id={id} tone="low" spacing="xl" className={styles.section} aria-labelledby="proximity-title">
       <div className={styles.card}>
         <div className={styles.story}>
           <Eyebrow icon={content.eyebrow.icon}>{content.eyebrow.label}</Eyebrow>
@@ -67,7 +69,7 @@ export function ProximityHub({ content, parkingMapUrl }: ProximityHubProps) {
               <div className={styles.metric}>
                 <dt className={cx('type-label-sm', styles.metricLabel)}>{labels.freshness}</dt>
                 <dd className={styles.freshness}>
-                  <Icon name={labels.freshnessIcon} size={16} />
+                  <Icon name={labels.freshnessIcon} size="sm" />
                   <span className="type-label-md">
                     {labels.freshnessState} ({estimate.freshness}%)
                   </span>
@@ -90,7 +92,7 @@ export function ProximityHub({ content, parkingMapUrl }: ProximityHubProps) {
           <div className={styles.map}>
             <div className={styles.mapOverlay}>
               <p className={styles.pin}>
-                <Icon name={location.icon} size={24} tone="accent" />
+                <Icon name={location.icon} size="2xl" tone="accent" />
                 <span className={styles.pinText}>
                   <span className={cx('type-label-md', styles.pinTitle)}>{location.title}</span>
                   <span className={cx('type-body-sm', styles.pinSubtitle)}>{location.subtitle}</span>
@@ -101,7 +103,7 @@ export function ProximityHub({ content, parkingMapUrl }: ProximityHubProps) {
 
           <div className={styles.parking}>
             <p className={styles.parkingMain}>
-              <Icon name={parking.icon} size={20} tone="accent" />
+              <Icon name={parking.icon} size="lg" tone="accent" />
               <span className={styles.pinText}>
                 <span className={cx('type-body-sm', styles.parkingTitle)}>{parking.title}</span>
                 <span className={cx('type-label-sm', styles.pinSubtitle)}>{parking.subtitle}</span>
@@ -113,7 +115,7 @@ export function ProximityHub({ content, parkingMapUrl }: ProximityHubProps) {
               rel="noopener noreferrer"
               className={cx('type-label-sm', styles.parkingLink)}
             >
-              <Icon name={parking.action.icon} size={16} />
+              <Icon name={parking.action.icon} size="sm" />
               <span>{parking.action.label}</span>
             </a>
           </div>

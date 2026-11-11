@@ -15,7 +15,7 @@ export function Toast({ visible, title, message, icon = 'check_circle' }: ToastP
   return (
     <div role="status" aria-live="polite" className={cx(styles.toast, visible && styles.visible)}>
       <span className={styles.icon}>
-        <Icon name={icon} size={22} />
+        <Icon name={icon} size="xl" />
       </span>
       <span className={styles.text}>
         <span className={cx('type-label-md', styles.title)}>{title}</span>
