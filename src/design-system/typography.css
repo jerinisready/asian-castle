@@ -1,0 +1,93 @@
+/*
+ * Type scale — from stitch/DESIGN.md.
+ * Each class sets family, size, line height, tracking and weight together.
+ * Display and large headlines step down to their "-mobile" sizes below 768px.
+ */
+.type-display-hero {
+  font-family: var(--font-serif);
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.type-headline-lg {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  line-height: 50px;
+  letter-spacing: -0.005em;
+  font-weight: 400;
+}
+
+.type-headline-md {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 500;
+}
+
+.type-headline-sm {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.type-body-lg {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.type-body-md {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.type-body-sm {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.type-label-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.type-label-md {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.type-label-sm {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .type-display-hero {
+    font-size: 38px;
+    line-height: 46px;
+    letter-spacing: 0;
+  }
+
+  .type-headline-lg {
+    font-size: 30px;
+    line-height: 38px;
+  }
+}

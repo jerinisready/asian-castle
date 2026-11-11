@@ -1,0 +1,134 @@
+.footer {
+  width: 100%;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  background: var(--color-surface-container-lowest);
+  color: var(--color-on-surface-variant);
+  box-shadow: var(--shadow-footer);
+}
+
+.inner {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.brandName,
+.accent {
+  color: var(--color-secondary);
+}
+
+.about {
+  color: var(--color-on-surface-variant);
+  line-height: 1.625;
+}
+
+.aboutEyebrow {
+  padding-top: var(--space-xs);
+}
+
+.address {
+  font-style: normal;
+  color: var(--color-on-surface);
+}
+
+.hours {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-secondary);
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-on-surface);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.contactLink:hover {
+  color: var(--color-secondary);
+}
+
+.email {
+  color: var(--color-on-surface-variant);
+  overflow-wrap: anywhere;
+}
+
+.partnerList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding-top: var(--space-xs);
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+}
+
+.copyright {
+  color: color-mix(in srgb, var(--color-on-surface-variant) 70%, transparent);
+  text-align: center;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-lg);
+}
+
+.legalLink {
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.legalLink:hover {
+  color: var(--color-secondary);
+}
+
+@media (min-width: 640px) {
+  .bottom {
+    flex-direction: row;
+  }
+
+  .copyright {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .columns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

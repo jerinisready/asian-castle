@@ -1,0 +1,67 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  border-radius: var(--radius-full);
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+/* Variants */
+.primary {
+  background: var(--color-primary-container);
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-xl);
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--color-primary-container) 85%, transparent);
+}
+
+.secondary {
+  background: var(--color-surface-container-high);
+  color: var(--color-secondary);
+}
+
+.secondary:hover {
+  background: var(--color-surface-bright);
+  color: var(--color-on-surface);
+}
+
+.quiet {
+  background: var(--color-surface-container);
+  color: var(--color-on-surface-variant);
+}
+
+.quiet:hover {
+  color: var(--color-secondary);
+}
+
+.whatsapp {
+  background: var(--color-whatsapp);
+  color: var(--color-on-whatsapp);
+  font-weight: 700;
+  box-shadow: var(--shadow-xl);
+}
+
+.whatsapp:hover {
+  background: var(--color-whatsapp-hover);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--space-xs) var(--space-md);
+}
+
+.md {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.lg {
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.xl {
+  padding: var(--space-sm) var(--space-xl);
+}

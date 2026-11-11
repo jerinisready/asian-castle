@@ -1,0 +1,101 @@
+/*
+ * Design tokens — "Heritage Hospitality Sanctuary"
+ * Source of truth: stitch/DESIGN.md (client approved).
+ * Components consume these variables only; change a value here, not in a component.
+ *
+ * Breakpoints (media queries cannot read variables):
+ *   sm 640px · md 768px · lg 1024px · xl 1280px
+ */
+:root {
+  /* ── Colour: surfaces ─────────────────────────────── */
+  --color-background: #161311;
+  --color-surface: #161311;
+  --color-surface-dim: #161311;
+  --color-surface-bright: #3d3836;
+  --color-surface-container-lowest: #110d0c;
+  --color-surface-container-low: #1f1b19;
+  --color-surface-container: #231f1d;
+  --color-surface-container-high: #2d2927;
+  --color-surface-container-highest: #383432;
+  --color-surface-variant: #383432;
+
+  /* ── Colour: content ──────────────────────────────── */
+  --color-on-surface: #eae1dd;
+  --color-on-surface-variant: #d8c1c2;
+  --color-outline: #a08c8d;
+  --color-outline-variant: #534344;
+
+  /* ── Colour: brand roles ──────────────────────────── */
+  --color-primary: #ffb2ba;
+  --color-on-primary: #561d26;
+  --color-primary-container: #49131d; /* Deep Castle Burgundy */
+  --color-on-primary-container: #c67780;
+  --color-secondary: #e1c28d; /* Antique brass, as rendered */
+  --color-on-secondary: #402d05;
+  --color-secondary-container: #5b461c;
+  --color-on-secondary-container: #d2b480;
+  --color-tertiary: #cbc6bd;
+  --color-on-tertiary: #32302a;
+
+  /* ── Colour: third-party ──────────────────────────── */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #20ba59;
+  --color-on-whatsapp: #000;
+
+  /* ── Typography ───────────────────────────────────── */
+  --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Spacing ──────────────────────────────────────── */
+  --space-2xs: 0.125rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.75rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --gutter: 1.5rem;
+  --gutter-sm: 1rem;
+  --margin: 3rem;
+  --margin-mobile: 1.25rem;
+
+  /* ── Layout ───────────────────────────────────────── */
+  --container-max: 80rem;
+  --container-narrow: 64rem;
+  --container-prose: 32rem;
+  --header-height: 6rem;
+
+  /* ── Radius ───────────────────────────────────────── */
+  --radius-sm: 0.5rem;
+  --radius: 1rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+  --radius-arch-top: 210px;
+
+  /* ── Elevation ────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-header: 0 4px 24px rgb(0 0 0 / 0.45);
+  --shadow-footer: 0 -4px 30px rgb(0 0 0 / 0.5);
+  --shadow-nav: 0 1px 8px rgb(0 0 0 / 0.2);
+  --shadow-cta: 0 8px 20px color-mix(in srgb, var(--color-primary-container) 35%, transparent);
+  --glow-active: inset 0 0 12px color-mix(in srgb, var(--color-secondary) 15%, transparent);
+
+  /* ── Glass ────────────────────────────────────────── */
+  --blur-md: 12px;
+  --blur-xl: 24px;
+  --blur-3xl: 64px;
+
+  /* ── Motion ───────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-medium: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+}

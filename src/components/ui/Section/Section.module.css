@@ -1,0 +1,32 @@
+.section {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.surface {
+  background: var(--color-surface);
+}
+
+.low {
+  background: var(--color-surface-container-low);
+}
+
+.lowest {
+  background: var(--color-surface-container-lowest);
+}
+
+.spacing-xl {
+  padding-block: var(--space-xl);
+}
+
+.spacing-2xl {
+  padding-block: var(--space-2xl);
+}
+
+.borders-top {
+  border-top: 1px solid color-mix(in srgb, var(--color-surface-container-highest) 30%, transparent);
+}
+
+.borders-both {
+  border-block: 1px solid color-mix(in srgb, var(--color-surface-container-highest) 30%, transparent);
+}

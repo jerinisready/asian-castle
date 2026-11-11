@@ -1,0 +1,243 @@
+.section {
+  position: relative;
+}
+
+.card {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--space-md);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: center;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-2xl);
+}
+
+.story,
+.aside {
+  display: flex;
+  flex-direction: column;
+}
+
+.story {
+  gap: var(--space-md);
+}
+
+.aside {
+  gap: var(--space-sm);
+}
+
+.title {
+  color: var(--color-on-surface);
+  line-height: 1.25;
+}
+
+.description {
+  margin-top: var(--space-xs);
+  color: var(--color-on-surface-variant);
+}
+
+/* Calculator */
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  background: var(--color-surface-container);
+}
+
+.calculatorHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.distanceLabel {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+
+.distanceValue {
+  flex-shrink: 0;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.range {
+  width: 100%;
+  height: 0.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-container-highest);
+  accent-color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-xs);
+  padding-top: var(--space-xs);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-xs);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-container-low);
+}
+
+.metricLabel {
+  color: var(--color-on-surface-variant);
+}
+
+.metricValue {
+  color: var(--color-on-surface);
+  font-weight: 700;
+}
+
+.metricValueFree {
+  color: var(--color-secondary);
+}
+
+.freshness {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.freshness span {
+  font-weight: 700;
+}
+
+.partners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.partnersLabel {
+  color: var(--color-on-surface-variant);
+}
+
+.partnerList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Location */
+.map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--color-surface-container-highest);
+  box-shadow: var(--shadow-xl);
+}
+
+.mapOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--color-surface-dim) 40%, transparent);
+  pointer-events: none;
+}
+
+.pin {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--color-surface-dim) 90%, transparent);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  box-shadow: var(--shadow-2xl);
+}
+
+.pinText {
+  display: flex;
+  flex-direction: column;
+}
+
+.pinTitle {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.pinSubtitle {
+  color: var(--color-on-surface-variant);
+}
+
+.parking {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-container);
+}
+
+.parkingMain {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.parkingTitle {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+
+.parkingLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-secondary-container);
+  color: var(--color-secondary);
+  transition-property: color, background-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+.parkingLink:hover {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: var(--space-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .story {
+    grid-column: span 7 / span 7;
+  }
+
+  .aside {
+    grid-column: span 5 / span 5;
+  }
+}
