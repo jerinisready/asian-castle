@@ -7,6 +7,7 @@ import type {
   IntegrityContent,
   ProximityContent,
   ReservationContent,
+  TableOrderContent,
   SignatureContent,
 } from './types'
 
@@ -213,14 +214,59 @@ export const reservation: ReservationContent = {
     },
   },
   note: { icon: 'lock', label: 'Zero pre-payment required. Confirmation dispatched via WhatsApp.' },
-  submit: { icon: 'arrow_forward', label: 'Confirm Reservation' },
-  successMessage:
-    'Sanctuary Table Reserved!\nA WhatsApp confirmation token has been dispatched to your mobile. We look forward to hosting you at Asian Castle, Bu Shaghara.',
+  submit: { icon: 'send', label: 'Request Table on WhatsApp' },
+  confirmation: {
+    icon: 'chat',
+    title: 'Your request is ready in WhatsApp',
+    message:
+      'Press send in WhatsApp to share it with our team. Your table is confirmed once we reply. Nothing has been booked yet.',
+    reopenLabel: 'Open WhatsApp again',
+  },
+  whatsappMessage: {
+    greeting: 'Salam Asian Castle, I would like to reserve a table.',
+    labels: {
+      name: 'Name',
+      contact: 'Mobile',
+      partySize: 'Party size',
+      date: 'Date',
+      timeSlot: 'Time',
+      preference: 'Preference',
+    },
+    closing: 'Please confirm availability. Thank you.',
+  },
 }
 
-export const tableOrderCopy = {
+export const tableOrderCopy: TableOrderContent = {
   fallbackTitle: 'Item Added',
   toastMessage: 'Added to your table selection',
+  sheet: {
+    title: 'Your Table Order',
+    closeLabel: 'Close table order',
+    empty: {
+      icon: 'restaurant_menu',
+      title: 'Your table is empty',
+      message: 'Add dishes from the menu and they will gather here.',
+      action: { icon: 'menu_book', label: 'Explore the Menu', href: `#${sectionIds.menu}` },
+    },
+    quantityLabel: 'Quantity',
+    decreaseLabel: 'One fewer',
+    increaseLabel: 'One more',
+    removeLabel: 'Remove',
+    totalLabel: 'Estimated total',
+    note: 'Prices in AED. Your order is sent as a WhatsApp message; we confirm by reply.',
+    send: { icon: 'send', label: 'Send Order on WhatsApp' },
+    clearLabel: 'Clear order',
+    sentNotice: {
+      icon: 'chat',
+      title: 'Your order is ready in WhatsApp',
+      message: 'Press send in WhatsApp to share it with our team. Nothing is ordered until we reply.',
+    },
+  },
+  whatsappMessage: {
+    greeting: 'Salam Asian Castle, I would like to order:',
+    totalLabel: 'Estimated total',
+    closing: 'Please confirm availability and timing. Thank you.',
+  },
 }
 
 export const community: CommunityContent = {

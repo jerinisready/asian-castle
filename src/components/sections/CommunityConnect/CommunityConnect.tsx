@@ -28,14 +28,14 @@ export function CommunityConnect({ content, instagram }: CommunityConnectProps) 
               key={proof.label}
               className={cx('type-label-sm', styles.proof, proof.emphasis ? styles.proofStrong : styles.proofMuted)}
             >
-              <Icon name={proof.icon} size={18} />
+              <Icon name={proof.icon} size="md" />
               <span>{proof.label}</span>
             </p>
           ))}
         </div>
         <div className={styles.actionRow}>
           <ButtonLink href={instagram.url} variant="secondary" size="sm" external>
-            <Icon name={content.action.icon} size={18} />
+            <Icon name={content.action.icon} size="md" />
             <span>{content.action.label}</span>
           </ButtonLink>
         </div>

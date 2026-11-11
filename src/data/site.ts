@@ -19,14 +19,18 @@ export const site: SiteInfo = {
   instagram: { handle: '@asiancastlerestaurant', url: 'https://instagram.com/asiancastlerestaurant' },
   privateDiningEmail: 'private@asiancastle.ae',
   parkingMapUrl: 'https://maps.google.com/?q=Asian+Castle+Restaurant+Bu+Shaghara+Sharjah+Parking',
+  timeZone: 'Asia/Dubai',
 }
 
 /** Section anchors. Section components use these ids; the nav links to them. */
 export const sectionIds = {
   arrival: 'arrival',
   integrity: 'integrity',
+  signature: 'signature-pot',
+  chefSelections: 'chef-selections',
   menu: 'heirloom-menu',
   directRing: 'direct-ring',
+  dispatchHub: 'dispatch-hub',
   reservations: 'reservations',
   reservationForm: 'reservation-form',
 } as const
@@ -35,13 +39,36 @@ export const header: HeaderContent = {
   nav: [
     { id: sectionIds.arrival, label: 'Arrival', href: `#${sectionIds.arrival}` },
     { id: sectionIds.integrity, label: 'Integrity', href: `#${sectionIds.integrity}` },
-    { id: sectionIds.menu, label: 'Heirloom Menu', href: `#${sectionIds.menu}` },
-    { id: sectionIds.directRing, label: 'Direct Ring', href: `#${sectionIds.directRing}` },
+    {
+      id: sectionIds.menu,
+      label: 'Heirloom Menu',
+      href: `#${sectionIds.menu}`,
+      sections: [sectionIds.signature, sectionIds.chefSelections, sectionIds.menu],
+    },
+    {
+      id: sectionIds.directRing,
+      label: 'Direct Ring',
+      href: `#${sectionIds.directRing}`,
+      sections: [sectionIds.directRing, sectionIds.dispatchHub],
+    },
     { id: sectionIds.reservations, label: 'Sanctuary & Reservations', href: `#${sectionIds.reservations}` },
   ],
   reserve: { label: 'Reserve Table', icon: 'calendar_today', href: `#${sectionIds.reservations}` },
   cartLabel: 'Bespoke Banquet Cart',
   accountLabel: 'Account',
+  skipLink: { label: 'Skip to the menu', href: `#${sectionIds.menu}` },
+  mobileNav: {
+    openLabel: 'Open navigation',
+    closeLabel: 'Close navigation',
+    openIcon: 'menu',
+    closeIcon: 'close',
+    title: 'Asian Castle',
+    whatsapp: {
+      icon: 'chat',
+      label: 'WhatsApp Concierge',
+      message: 'Salam Asian Castle I would like to reserve a table',
+    },
+  },
 }
 
 export const footer: FooterContent = {

@@ -1,20 +1,20 @@
 .toast {
   position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  z-index: 50;
+  right: var(--inset-lg);
+  bottom: var(--inset-lg);
+  z-index: var(--z-header);
   display: flex;
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-md);
-  border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, var(--color-secondary) 20%, transparent);
-  background: color-mix(in srgb, var(--color-surface-container-highest) 95%, transparent);
+  border-radius: var(--radius-card);
+  border: var(--border-accent);
+  background: var(--surface-glass-raised);
   backdrop-filter: blur(var(--blur-xl));
   -webkit-backdrop-filter: blur(var(--blur-xl));
   box-shadow: var(--shadow-2xl);
   opacity: 0;
-  transform: translateY(8rem);
+  transform: translateY(var(--toast-offset));
   pointer-events: none;
   transition-property: opacity, transform;
   transition-duration: var(--duration-medium);
@@ -28,12 +28,12 @@
 
 .icon {
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--size-control-lg);
+  height: var(--size-control-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   background: var(--color-secondary-container);
   color: var(--color-secondary);
 }
@@ -45,7 +45,7 @@
 
 .title {
   color: var(--color-on-surface);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .message {

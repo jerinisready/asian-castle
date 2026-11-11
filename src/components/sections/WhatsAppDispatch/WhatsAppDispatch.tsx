@@ -1,6 +1,7 @@
 import type { DispatchContent, TableItem } from '../../../data/types'
 import { cx } from '../../../utils/cx'
 import { whatsappLink } from '../../../utils/links'
+import { AddButton } from '../../ui/AddButton/AddButton'
 import { ButtonLink } from '../../ui/Button/ButtonLink'
 import { Eyebrow } from '../../ui/Eyebrow/Eyebrow'
 import { Icon } from '../../ui/Icon/Icon'
@@ -31,7 +32,7 @@ export function WhatsAppDispatch({ id, content, whatsappNumber, onAddItem }: Wha
               external
               className={styles.cta}
             >
-              <Icon name={content.cta.icon} size={20} />
+              <Icon name={content.cta.icon} size="lg" />
               <span>{content.cta.label}</span>
             </ButtonLink>
           }
@@ -68,18 +69,15 @@ export function WhatsAppDispatch({ id, content, whatsappNumber, onAddItem }: Wha
                   external
                   className={styles.offerCta}
                 >
-                  <Icon name={offer.action.icon} size={18} tone="accent" />
+                  <Icon name={offer.action.icon} size="md" tone="accent" />
                   <span>{offer.action.label}</span>
                 </ButtonLink>
                 {offer.addItem && (
-                  <button
-                    type="button"
+                  <AddButton
                     className={styles.add}
-                    aria-label={`Add ${offer.addItem.name} to your table order`}
-                    onClick={() => offer.addItem && onAddItem(offer.addItem)}
-                  >
-                    <Icon name="add" size={20} />
-                  </button>
+                    label={`Add ${offer.addItem.name} to your table order`}
+                    onAdd={() => offer.addItem && onAddItem({ id: offer.id, ...offer.addItem })}
+                  />
                 )}
               </div>
             </article>

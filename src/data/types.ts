@@ -24,14 +24,39 @@ export interface WhatsAppAction extends IconLabel {
 }
 
 export interface TableItem {
+  /** Stable id; items with the same id share one order line. Falls back to `name`. */
+  id?: string
   name: string
   price: number
+}
+
+/** Copy for the table order: toast, sheet and WhatsApp message. */
+export interface TableOrderContent {
+  fallbackTitle: string
+  toastMessage: string
+  sheet: {
+    title: string
+    closeLabel: string
+    empty: { icon: IconName; title: string; message: string; action: LinkAction }
+    quantityLabel: string
+    decreaseLabel: string
+    increaseLabel: string
+    removeLabel: string
+    totalLabel: string
+    note: string
+    send: IconLabel
+    clearLabel: string
+    sentNotice: { icon: IconName; title: string; message: string }
+  }
+  whatsappMessage: { greeting: string; totalLabel: string; closing: string }
 }
 
 export interface NavItem {
   id: string
   label: string
   href: string
+  /** Section ids that mark this item as current while scrolling. Defaults to [id]. */
+  sections?: string[]
 }
 
 /* ── Site ─────────────────────────────────────────── */
@@ -49,6 +74,8 @@ export interface SiteInfo {
   instagram: { handle: string; url: string }
   privateDiningEmail: string
   parkingMapUrl: string
+  /** IANA time zone of the restaurant; booking dates are checked against it. */
+  timeZone: string
 }
 
 export interface HeaderContent {
@@ -56,6 +83,17 @@ export interface HeaderContent {
   reserve: LinkAction
   cartLabel: string
   accountLabel: string
+  /** First focusable element on the page. */
+  skipLink: { label: string; href: string }
+  /** Navigation sheet shown below 1280px. */
+  mobileNav: {
+    openLabel: string
+    closeLabel: string
+    openIcon: IconName
+    closeIcon: IconName
+    title: string
+    whatsapp: WhatsAppAction
+  }
 }
 
 /* ── Hero ─────────────────────────────────────────── */
@@ -215,7 +253,27 @@ export interface ReservationContent {
   }
   note: IconLabel
   submit: IconLabel
-  successMessage: string
+  /**
+   * Shown after submit. The request opens in WhatsApp; the table is only confirmed
+   * when the restaurant replies, so this copy must not claim a confirmed booking.
+   */
+  confirmation: { icon: IconName; title: string; message: string; reopenLabel: string }
+  /** Prefilled WhatsApp message built from the form. */
+  whatsappMessage: ReservationMessageTemplate
+}
+
+/** Labels for each line of the WhatsApp booking request. */
+export interface ReservationMessageTemplate {
+  greeting: string
+  labels: {
+    name: string
+    contact: string
+    partySize: string
+    date: string
+    timeSlot: string
+    preference: string
+  }
+  closing: string
 }
 
 export interface CommunityContent {

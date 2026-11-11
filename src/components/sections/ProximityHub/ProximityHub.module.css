@@ -10,7 +10,7 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-lg);
   align-items: center;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-panel);
   background: var(--color-surface);
   box-shadow: var(--shadow-2xl);
 }
@@ -31,7 +31,7 @@
 
 .title {
   color: var(--color-on-surface);
-  line-height: 1.25;
+  line-height: var(--leading-title);
 }
 
 .description {
@@ -45,7 +45,7 @@
   flex-direction: column;
   gap: var(--space-sm);
   padding: var(--space-md);
-  border-radius: var(--radius);
+  border-radius: var(--radius-card);
   background: var(--color-surface-container);
 }
 
@@ -58,19 +58,19 @@
 
 .distanceLabel {
   color: var(--color-on-surface);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .distanceValue {
   flex-shrink: 0;
   color: var(--color-secondary);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .range {
   width: 100%;
-  height: 0.5rem;
-  border-radius: var(--radius-lg);
+  height: var(--size-track);
+  border-radius: var(--radius-pill);
   background: var(--color-surface-container-highest);
   accent-color: var(--color-secondary);
   cursor: pointer;
@@ -88,7 +88,7 @@
   flex-direction: column;
   min-width: 0;
   padding: var(--space-xs);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-pill);
   background: var(--color-surface-container-low);
 }
 
@@ -98,7 +98,7 @@
 
 .metricValue {
   color: var(--color-on-surface);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .metricValueFree {
@@ -110,11 +110,11 @@
   align-items: center;
   gap: var(--space-xs);
   color: var(--color-secondary);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .freshness span {
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .partners {
@@ -141,7 +141,7 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: var(--radius-card);
   background: var(--color-surface-container-highest);
   box-shadow: var(--shadow-xl);
 }
@@ -161,8 +161,8 @@
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-sm);
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--color-surface-dim) 90%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
   box-shadow: var(--shadow-2xl);
@@ -175,7 +175,7 @@
 
 .pinTitle {
   color: var(--color-secondary);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
 }
 
 .pinSubtitle {
@@ -188,7 +188,7 @@
   justify-content: space-between;
   gap: var(--space-sm);
   padding: var(--space-sm);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-pill);
   background: var(--color-surface-container);
 }
 
@@ -200,15 +200,16 @@
 
 .parkingTitle {
   color: var(--color-on-surface);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .parkingLink {
+  composes: touch-target from global;
   display: flex;
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   background: var(--color-secondary-container);
   color: var(--color-secondary);
   transition-property: color, background-color;

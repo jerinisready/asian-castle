@@ -1,52 +1,144 @@
 /*
- * Design tokens — "Heritage Hospitality Sanctuary"
- * Source of truth: stitch/DESIGN.md (client approved).
- * Components consume these variables only; change a value here, not in a component.
+ * ASIAN CASTLE — design tokens
  *
- * Breakpoints (media queries cannot read variables):
- *   sm 640px · md 768px · lg 1024px · xl 1280px
+ * Three layers. Components consume layers 2 and 3 only; never a raw hex or a primitive.
+ *   1. Brand primitives    the six approved brand colours (--ac-*). Change a brand colour here.
+ *   2. Semantic roles      surfaces, text, accents, borders, states (--color-*, --border-*, --surface-*).
+ *   3. Scales & recipes    type, space, radius, elevation, icon, motion, focus.
+ *
+ * Every derived colour is a color-mix() of the primitives, so the whole system follows
+ * the six brand values. TypeScript mirrors (breakpoints, motion, icon sizes) live in tokens.ts.
+ *
+ * Gold discipline: Antique Gold (--color-accent) is for small, deliberate moments only:
+ * heritage labels, focus rings, active markers and hairline accents. Accent *text*
+ * (prices, highlighted words, icons) uses the softer Champagne (--color-secondary).
+ *
+ * Breakpoints (media queries cannot read custom properties; mirrored in tokens.ts):
+ *   mobile  < 640px · sm 640px · tablet md 768px · desktop lg 1024px · wide xl 1280px
  */
 :root {
-  /* ── Colour: surfaces ─────────────────────────────── */
-  --color-background: #161311;
-  --color-surface: #161311;
-  --color-surface-dim: #161311;
-  --color-surface-bright: #3d3836;
-  --color-surface-container-lowest: #110d0c;
-  --color-surface-container-low: #1f1b19;
-  --color-surface-container: #231f1d;
-  --color-surface-container-high: #2d2927;
-  --color-surface-container-highest: #383432;
-  --color-surface-variant: #383432;
+  /* ══ 1. Brand primitives ══════════════════════════════════════════════ */
+  --ac-obsidian: #141110;
+  --ac-charcoal: #211c19; /* Warm Charcoal */
+  --ac-gold: #c6a265; /* Antique Gold */
+  --ac-champagne: #e8cca0;
+  --ac-burgundy: #641d2a;
+  --ac-ivory: #f1e8df;
 
-  /* ── Colour: content ──────────────────────────────── */
-  --color-on-surface: #eae1dd;
-  --color-on-surface-variant: #d8c1c2;
-  --color-outline: #a08c8d;
-  --color-outline-variant: #534344;
+  /* ══ 2. Semantic colour roles ═════════════════════════════════════════ */
 
-  /* ── Colour: brand roles ──────────────────────────── */
-  --color-primary: #ffb2ba;
-  --color-on-primary: #561d26;
-  --color-primary-container: #49131d; /* Deep Castle Burgundy */
-  --color-on-primary-container: #c67780;
-  --color-secondary: #e1c28d; /* Antique brass, as rendered */
-  --color-on-secondary: #402d05;
-  --color-secondary-container: #5b461c;
-  --color-on-secondary-container: #d2b480;
-  --color-tertiary: #cbc6bd;
-  --color-on-tertiary: #32302a;
+  /* Surfaces: obsidian → warm charcoal → lifted charcoal (low to high) */
+  --color-background: var(--ac-obsidian);
+  --color-surface: var(--ac-obsidian);
+  --color-surface-dim: var(--ac-obsidian);
+  --color-surface-container-lowest: color-mix(in oklab, var(--ac-obsidian) 78%, black);
+  --color-surface-container-low: color-mix(in oklab, var(--ac-obsidian) 50%, var(--ac-charcoal));
+  --color-surface-container: var(--ac-charcoal);
+  --color-surface-container-high: color-mix(in oklab, var(--ac-charcoal) 93%, var(--ac-ivory));
+  --color-surface-container-highest: color-mix(in oklab, var(--ac-charcoal) 87%, var(--ac-ivory));
+  --color-surface-bright: color-mix(in oklab, var(--ac-charcoal) 82%, var(--ac-ivory));
+  --color-surface-variant: var(--color-surface-container-highest);
 
-  /* ── Colour: third-party ──────────────────────────── */
+  /* Text & lines on dark surfaces */
+  --color-on-surface: var(--ac-ivory);
+  --color-on-surface-variant: color-mix(in oklab, var(--ac-ivory) 74%, var(--ac-obsidian));
+  --color-on-surface-muted: color-mix(in oklab, var(--ac-ivory) 56%, var(--ac-obsidian));
+  --color-outline: color-mix(in oklab, var(--ac-ivory) 45%, var(--ac-obsidian));
+  --color-outline-variant: color-mix(in oklab, var(--ac-ivory) 18%, var(--ac-obsidian));
+
+  /* Primary — Deep Burgundy: interaction (primary buttons, highlights, selection) */
+  --color-primary: color-mix(in oklab, var(--ac-burgundy) 40%, var(--ac-ivory));
+  --color-on-primary: color-mix(in oklab, var(--ac-burgundy) 70%, black);
+  --color-primary-container: var(--ac-burgundy);
+  --color-primary-container-hover: color-mix(in oklab, var(--ac-burgundy) 88%, var(--ac-ivory));
+  --color-on-primary-container: var(--ac-ivory);
+
+  /* Secondary — Champagne: accent text, prices, icons */
+  --color-secondary: var(--ac-champagne);
+  --color-on-secondary: color-mix(in oklab, var(--ac-gold) 30%, var(--ac-obsidian));
+  --color-secondary-container: color-mix(in oklab, var(--ac-gold) 30%, var(--ac-charcoal));
+  --color-on-secondary-container: var(--ac-champagne);
+  --color-secondary-muted: color-mix(in oklab, var(--ac-champagne) 70%, var(--ac-obsidian));
+
+  /* Accent — Antique Gold: used sparingly (see header note) */
+  --color-accent: var(--ac-gold);
+  --color-on-accent: var(--ac-obsidian);
+
+  /* Tertiary — Ivory tint for quiet supporting text */
+  --color-tertiary: color-mix(in oklab, var(--ac-ivory) 82%, var(--ac-charcoal));
+  --color-on-tertiary: var(--ac-charcoal);
+
+  /* Semantic states */
+  --color-success: #8fbf8a;
+  --color-warning: var(--ac-champagne);
+  --color-error: #e8968f;
+  --color-info: color-mix(in oklab, var(--ac-ivory) 80%, #6f8fbf);
+
+  /* Third-party brand (unchanged; WhatsApp's own colours) */
   --color-whatsapp: #25d366;
   --color-whatsapp-hover: #20ba59;
   --color-on-whatsapp: #000;
 
-  /* ── Typography ───────────────────────────────────── */
-  --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
-  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* ══ 3a. Borders ══════════════════════════════════════════════════════ */
+  --border-width: 1px;
+  --color-divider: color-mix(in srgb, var(--color-surface-container-highest) 30%, transparent);
+  --color-divider-strong: color-mix(in srgb, var(--color-surface-container-highest) 50%, transparent);
+  --color-border-accent: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  --color-border-accent-strong: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  --border-divider: var(--border-width) solid var(--color-divider);
+  --border-divider-strong: var(--border-width) solid var(--color-divider-strong);
+  --border-accent: var(--border-width) solid var(--color-border-accent);
 
-  /* ── Spacing ──────────────────────────────────────── */
+  /* ══ 3b. Surface recipes (glass) ══════════════════════════════════════ */
+  --blur-md: 12px;
+  --blur-xl: 24px;
+  --blur-3xl: 64px;
+  --surface-header: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  --surface-glass: color-mix(in srgb, var(--color-surface-dim) 80%, transparent);
+  --surface-glass-deep: color-mix(in srgb, var(--color-surface-container-lowest) 80%, transparent);
+  --surface-glass-raised: color-mix(in srgb, var(--color-surface-container-high) 90%, transparent);
+  --surface-tint: color-mix(in srgb, var(--color-surface-container) 70%, transparent);
+  --surface-accent-tint: color-mix(in srgb, var(--color-secondary-container) 50%, transparent);
+  --surface-scrim: color-mix(in srgb, var(--color-surface-container-lowest) 70%, transparent);
+
+  /* ══ 3c. Typography ═══════════════════════════════════════════════════ */
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heritage: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-serif: var(--font-display); /* legacy alias */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Fluid sizes: mobile (375px) → wide (1280px). Body sizes stay fixed for readability. */
+  --text-display: clamp(2.5rem, 1.982rem + 2.21vw, 3.75rem); /* 40 → 60 */
+  --text-headline-lg: clamp(2rem, 1.637rem + 1.547vw, 2.875rem); /* 32 → 46 */
+  --text-headline-md: clamp(1.625rem, 1.521rem + 0.442vw, 1.875rem); /* 26 → 30 */
+  --text-headline-sm: clamp(1.375rem, 1.323rem + 0.221vw, 1.5rem); /* 22 → 24 */
+  --text-body-lg: 1.0625rem; /* 17 */
+  --text-body-md: 0.9375rem; /* 15 */
+  --text-body-sm: 0.8125rem; /* 13 */
+  --text-label-md: 0.875rem; /* 14 */
+  --text-label-sm: 0.75rem; /* 12 — floor for UI text */
+  --text-label-heritage: 0.75rem; /* 12, Cinzel caps */
+
+  --leading-display: 1.08;
+  --leading-heading: 1.15;
+  --leading-title: 1.25;
+  --leading-body: 1.6;
+  --leading-label: 1.3;
+  --leading-none: 1;
+
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.005em;
+  --tracking-normal: 0;
+  --tracking-label: 0.04em;
+  --tracking-caps: 0.1em;
+  --tracking-heritage: 0.2em;
+
+  /* ══ 3d. Spacing & layout ═════════════════════════════════════════════ */
   --space-2xs: 0.125rem;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -54,48 +146,112 @@
   --space-lg: 1.75rem;
   --space-xl: 3rem;
   --space-2xl: 5rem;
+  --space-3xl: 7.5rem;
+
+  /* Offsets for elements floating inside media (tags, status bars, toasts) */
+  --inset-sm: 0.75rem;
+  --inset-md: 1rem;
+  --inset-lg: 1.5rem;
+
+  --section-space: var(--space-2xl);
+  --section-space-compact: var(--space-xl);
   --gutter: 1.5rem;
   --gutter-sm: 1rem;
   --margin: 3rem;
   --margin-mobile: 1.25rem;
 
-  /* ── Layout ───────────────────────────────────────── */
-  --container-max: 80rem;
-  --container-narrow: 64rem;
-  --container-prose: 32rem;
+  --container-max: 80rem; /* 1280 */
+  --container-narrow: 64rem; /* 1024 */
+  --container-prose: 32rem; /* 512 */
   --header-height: 6rem;
+  --size-sheet: 24rem; /* side sheets (mobile navigation) */
 
-  /* ── Radius ───────────────────────────────────────── */
-  --radius-sm: 0.5rem;
-  --radius: 1rem;
-  --radius-md: 1.5rem;
-  --radius-lg: 2rem;
-  --radius-xl: 3rem;
-  --radius-full: 9999px;
+  /* Minimum tap target for anything interactive (WCAG 2.5.5 / Apple HIG 44px) */
+  --size-touch: 2.75rem;
+
+  /* Fixed control and badge sizes (circular icon wells, avatars, counters) */
+  --size-counter: 1.25rem;
+  --size-control-sm: 2rem;
+  --size-control-md: 2.25rem;
+  --size-control-lg: 2.5rem;
+  --size-control-xl: 3rem;
+  --size-control-2xl: 3.5rem;
+  --size-dot: 0.75rem;
+  --size-track: 0.5rem;
+  --size-rule-width: 6rem;
+  --size-rule-weight: 0.25rem;
+
+  /* ══ 3e. Radius — four roles only ═════════════════════════════════════
+   *   pill   buttons, chips, inputs, nav, badges, icon wells, floating status bars
+   *   card   dish cards, media frames, toasts, maps, inner calculators
+   *   panel  large section panels and the tiles inside them
+   *   arch   top of the hero portal (with card radius at the bottom)
+   */
+  --radius-pill: 9999px;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
   --radius-arch-top: 210px;
 
-  /* ── Elevation ────────────────────────────────────── */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  /* ══ 3f. Elevation (tuned for dark surfaces) ══════════════════════════ */
+  --elevation-1: 0 1px 2px rgb(0 0 0 / 0.3);
+  --elevation-2: 0 4px 12px -2px rgb(0 0 0 / 0.35);
+  --elevation-3: 0 10px 24px -6px rgb(0 0 0 / 0.45);
+  --elevation-4: 0 18px 36px -10px rgb(0 0 0 / 0.55);
+  --elevation-5: 0 28px 56px -14px rgb(0 0 0 / 0.65);
+  --elevation-inset: inset 0 2px 4px 0 rgb(0 0 0 / 0.25);
+
+  /* Legacy names → elevation levels */
+  --shadow-sm: var(--elevation-1);
+  --shadow-md: var(--elevation-2);
+  --shadow-lg: var(--elevation-3);
+  --shadow-xl: var(--elevation-4);
+  --shadow-2xl: var(--elevation-5);
+  --shadow-inner: var(--elevation-inset);
   --shadow-header: 0 4px 24px rgb(0 0 0 / 0.45);
   --shadow-footer: 0 -4px 30px rgb(0 0 0 / 0.5);
-  --shadow-nav: 0 1px 8px rgb(0 0 0 / 0.2);
+  --shadow-nav: var(--elevation-1);
   --shadow-cta: 0 8px 20px color-mix(in srgb, var(--color-primary-container) 35%, transparent);
-  --glow-active: inset 0 0 12px color-mix(in srgb, var(--color-secondary) 15%, transparent);
+  --glow-active: inset 0 0 12px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  --glow-primary-hover: inset 0 0 16px color-mix(in srgb, var(--color-accent) 25%, transparent);
 
-  /* ── Glass ────────────────────────────────────────── */
-  --blur-md: 12px;
-  --blur-xl: 24px;
-  --blur-3xl: 64px;
+  /* ══ 3g. Icons (Material Symbols Outlined, one weight site-wide) ══════ */
+  --icon-xs: 14px;
+  --icon-sm: 16px;
+  --icon-md: 18px;
+  --icon-lg: 20px;
+  --icon-xl: 22px;
+  --icon-2xl: 24px;
+  --icon-3xl: 28px;
 
-  /* ── Motion ───────────────────────────────────────── */
+  /* ══ 3h. Motion ═══════════════════════════════════════════════════════ */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration-fast: 150ms;
-  --duration-medium: 300ms;
-  --duration-slow: 500ms;
-  --duration-slower: 700ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms; /* press, colour */
+  --duration-medium: 300ms; /* hover, state, enter */
+  --duration-slow: 500ms; /* card lift, image zoom */
+  --duration-slower: 700ms; /* large media */
+  --duration-ambient-pulse: 2s;
+  --duration-ambient-float: 4s;
+  --duration-ambient-steam: 4s;
+  --duration-ambient-steam-alt: 5s;
+
+  /* Interaction states */
+  --hover-lift: -0.25rem;
+  --hover-zoom: 1.05;
+  --press-scale: 0.97;
+  --toast-offset: 8rem;
+
+  /* Focus */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+  --focus-ring-color: var(--color-accent);
+  --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color);
+  --focus-ring-inset: 0 0 0 1px var(--focus-ring-color);
+
+  /* Layers */
+  --z-header: 50;
+  --z-toast: 50;
+  --z-skip-link: 60;
+  --z-content: 10;
 }

@@ -3,14 +3,14 @@
   flex-direction: column;
   gap: var(--space-lg);
   padding: var(--space-md);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-panel);
   background: var(--color-surface-container);
   box-shadow: var(--shadow-2xl);
 }
 
 .header {
   padding-bottom: var(--space-md);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-surface-container-highest) 50%, transparent);
+  border-bottom: var(--border-divider-strong);
 }
 
 .title {
@@ -44,21 +44,22 @@
 
 .control {
   width: 100%;
+  min-height: var(--size-touch);
   padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-pill);
   background: var(--color-surface-container-lowest);
   color: var(--color-on-surface);
   color-scheme: dark;
 }
 
 .control::placeholder {
-  color: color-mix(in srgb, var(--color-on-surface-variant) 60%, transparent);
+  color: var(--color-on-surface-muted);
 }
 
 .control:focus,
 .control:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1px var(--color-secondary);
+  box-shadow: var(--focus-ring-inset);
 }
 
 .formFooter {
@@ -78,13 +79,67 @@
   color: var(--color-on-surface-variant);
 }
 
+/* Full width on phones so the label stays on one line. */
+.formFooter .submit {
+  width: 100%;
+  justify-content: center;
+  padding-inline: var(--space-md);
+}
+
+/* After submit: the request is waiting in WhatsApp (not yet confirmed). */
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: var(--border-accent);
+  border-radius: var(--radius-card);
+  background: var(--surface-accent-tint);
+}
+
+/* Focused programmatically so screen readers read it; not itself interactive. */
+.confirmation:focus {
+  outline: none;
+}
+
+.confirmationText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.confirmationTitle {
+  color: var(--color-on-surface);
+  font-weight: var(--weight-semibold);
+}
+
+.confirmationMessage {
+  color: var(--color-on-surface-variant);
+}
+
 @media (min-width: 640px) {
+  .confirmation {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .confirmationText {
+    flex: 1;
+  }
+
   .panel {
     padding: var(--space-xl);
   }
 
   .formFooter {
     flex-direction: row;
+  }
+
+  .formFooter .submit {
+    width: auto;
+    padding-inline: var(--space-xl);
   }
 }
 

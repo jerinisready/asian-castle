@@ -45,7 +45,7 @@ export function MenuRegistry({ id, content, onAddDish }: MenuRegistryProps) {
             </div>
           }
         >
-          <Eyebrow icon={content.eyebrow.icon} iconSize={18}>
+          <Eyebrow icon={content.eyebrow.icon} iconSize="md">
             {content.eyebrow.label}
           </Eyebrow>
           <h2 id={`${id}-title`} className={cx('type-headline-lg', styles.title)}>

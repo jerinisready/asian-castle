@@ -28,7 +28,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
       <div className={styles.grid}>
         <div className={styles.story}>
           <p className={styles.pill}>
-            <Icon name={pill.icon} size={18} tone="accent" />
+            <Icon name={pill.icon} size="md" tone="accent" />
             <span className={cx('type-label-eyebrow', styles.pillText)}>{pill.label}</span>
           </p>
 
@@ -45,7 +45,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
             {metrics.map((metric) => (
               <li key={metric.label} className={styles.metric}>
                 <span className={styles.metricIcon}>
-                  <Icon name={metric.icon} size={20} tone="accent" />
+                  <Icon name={metric.icon} size="lg" tone="accent" />
                 </span>
                 <span className={styles.metricText}>
                   <span className={cx('type-headline-sm', styles.metricValue)}>{metric.value}</span>
@@ -57,7 +57,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
               <a href={parking.href} target="_blank" rel="noopener noreferrer" className={styles.parking}>
                 <span className={styles.parkingMain}>
                   <span className={cx(styles.metricIcon, styles.parkingIcon)}>
-                    <Icon name={parking.icon} size={18} tone="accent" />
+                    <Icon name={parking.icon} size="md" tone="accent" />
                   </span>
                   <span className={styles.metricText}>
                     <span className={cx('type-label-sm', styles.parkingTitle)}>{parking.title}</span>
@@ -66,7 +66,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
                 </span>
                 <span className={cx('type-label-sm', styles.navigate)}>
                   <span>{parking.action.label}</span>
-                  <Icon name={parking.action.icon} size={14} />
+                  <Icon name={parking.action.icon} size="xs" />
                 </span>
               </a>
             </li>
@@ -74,12 +74,12 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
 
           <div className={styles.actions}>
             <ButtonLink href={content.reserveAction.href} size="lg" className={styles.reserveButton}>
-              <Icon name={content.reserveAction.icon} size={20} tone="accent" className={styles.reserveIcon} />
+              <Icon name={content.reserveAction.icon} size="lg" tone="accent" className={styles.reserveIcon} />
               <span>{content.reserveAction.label}</span>
-              <Icon name="arrow_forward" size={18} />
+              <Icon name="arrow_forward" size="md" />
             </ButtonLink>
             <ButtonLink href={content.menuAction.href} variant="secondary" className={styles.menuButton}>
-              <Icon name={content.menuAction.icon} size={20} />
+              <Icon name={content.menuAction.icon} size="lg" />
               <span>{content.menuAction.label}</span>
             </ButtonLink>
             <ButtonLink
@@ -87,7 +87,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
               variant="quiet"
               external
             >
-              <Icon name={content.whatsappAction.icon} size={16} tone="accent" />
+              <Icon name={content.whatsappAction.icon} size="sm" tone="accent" />
               <span>{content.whatsappAction.label}</span>
             </ButtonLink>
           </div>
@@ -110,7 +110,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
             <div className={styles.archShade} aria-hidden="true" />
             <div className={styles.crest} aria-hidden="true">
               <span className={styles.crestBadge}>
-                <Icon name={showcase.crestIcon} size={28} tone="accent" />
+                <Icon name={showcase.crestIcon} size="3xl" tone="accent" />
               </span>
             </div>
             <figcaption className={styles.status}>
@@ -122,7 +122,7 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
                 </span>
               </span>
               <span className={styles.statusTime}>
-                <Icon name={showcase.status.icon} size={16} />
+                <Icon name={showcase.status.icon} size="sm" />
                 <span className={cx('type-label-sm', styles.statusTimeText)}>{showcase.status.until}</span>
               </span>
             </figcaption>
@@ -130,12 +130,12 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
 
           <div className={styles.rating}>
             <span className={styles.ratingIcon}>
-              <Icon name={rating.icon} size={26} />
+              <Icon name={rating.icon} size="3xl" />
             </span>
             <span className={styles.ratingText}>
               <span className={styles.ratingValueRow}>
                 <span className={cx('type-headline-sm', styles.ratingValue)}>{rating.value}</span>
-                <Icon name={rating.valueIcon} size={16} />
+                <Icon name={rating.valueIcon} size="sm" />
               </span>
               <span className={cx('type-label-sm', styles.ratingLabel)}>{rating.label}</span>
             </span>

@@ -16,17 +16,17 @@
 }
 
 .spacing-xl {
-  padding-block: var(--space-xl);
+  padding-block: var(--section-space-compact);
 }
 
 .spacing-2xl {
-  padding-block: var(--space-2xl);
+  padding-block: var(--section-space);
 }
 
 .borders-top {
-  border-top: 1px solid color-mix(in srgb, var(--color-surface-container-highest) 30%, transparent);
+  border-top: var(--border-divider);
 }
 
 .borders-both {
-  border-block: 1px solid color-mix(in srgb, var(--color-surface-container-highest) 30%, transparent);
+  border-block: var(--border-divider);
 }

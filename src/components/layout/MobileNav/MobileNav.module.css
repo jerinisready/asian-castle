@@ -1,0 +1,45 @@
+/* Sheet shell (dialog, backdrop, header, footer) lives in ui/Sheet. */
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-height: var(--size-touch);
+  padding-block: var(--space-sm);
+  border-bottom: var(--border-divider);
+  color: var(--color-on-surface-variant);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--color-on-surface);
+}
+
+.linkActive,
+.linkActive:hover {
+  color: var(--color-secondary);
+}
+
+/* Gold marks the current section only. */
+.marker {
+  flex-shrink: 0;
+  width: var(--space-sm);
+  height: var(--space-sm);
+  border-radius: var(--radius-pill);
+  background: var(--color-outline-variant);
+}
+
+.linkActive .marker {
+  background: var(--color-accent);
+}
+
+/* Footer buttons span the sheet. */
+.action {
+  width: 100%;
+  justify-content: center;
+}

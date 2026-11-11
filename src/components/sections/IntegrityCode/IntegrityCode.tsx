@@ -40,7 +40,7 @@ export function IntegrityCode({ id, content }: IntegrityCodeProps) {
           {content.badges.map((badge) => (
             <li key={badge.title} className={styles.badge}>
               <span className={styles.badgeIcon}>
-                <Icon name={badge.icon} size={22} />
+                <Icon name={badge.icon} size="xl" />
               </span>
               <span className={cx('type-headline-sm', styles.badgeValue)}>{badge.value}</span>
               <span className={cx('type-label-sm', styles.badgeTitle)}>{badge.title}</span>

@@ -9,18 +9,20 @@ import { SectionHeader } from '../../ui/SectionHeader/SectionHeader'
 import styles from './ChefSelections.module.css'
 
 interface ChefSelectionsProps {
+  /** Anchor id for in-page navigation. */
+  id?: string
   content: ChefSelectionsContent
   onAddDish: (dish: Dish) => void
 }
 
-export function ChefSelections({ content, onAddDish }: ChefSelectionsProps) {
+export function ChefSelections({ id, content, onAddDish }: ChefSelectionsProps) {
   return (
-    <Section tone="low" borders="top" aria-labelledby="chef-selections-title">
+    <Section id={id} tone="low" borders="top" aria-labelledby="chef-selections-title">
       <Container className={styles.inner}>
         <SectionHeader
           aside={
             <p className={cx('type-label-sm', styles.badge)}>
-              <Icon name={content.badge.icon} size={18} />
+              <Icon name={content.badge.icon} size="md" />
               <span>{content.badge.label}</span>
             </p>
           }

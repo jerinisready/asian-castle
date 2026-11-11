@@ -8,14 +8,14 @@
   stroke: color-mix(in srgb, var(--color-secondary) 50%, transparent);
   filter: blur(6px);
   transform-origin: center;
-  animation: rise-brass 4s ease-out infinite;
+  animation: rise-brass var(--duration-ambient-steam) ease-out infinite;
 }
 
 .plumeWhite {
-  stroke: rgb(255 255 255 / 0.4);
+  stroke: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
   filter: blur(8px);
   transform-origin: center;
-  animation: rise-white 5s ease-out 2s infinite;
+  animation: rise-white var(--duration-ambient-steam-alt) ease-out var(--duration-ambient-pulse) infinite;
 }
 
 @keyframes rise-brass {

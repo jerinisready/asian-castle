@@ -17,7 +17,7 @@ export function SiteFooter({ site, content }: SiteFooterProps) {
         <div className={styles.columns}>
           <div className={styles.column}>
             <p className={styles.brandRow}>
-              <Icon name={content.about.icon} size={26} tone="accent" />
+              <Icon name={content.about.icon} size="3xl" tone="accent" />
               <span className={cx('type-headline-sm', styles.brandName)}>{site.name}</span>
             </p>
             <p className={cx('type-body-sm', styles.about)}>{content.about.description}</p>
@@ -34,7 +34,7 @@ export function SiteFooter({ site, content }: SiteFooterProps) {
               {site.addressLines[1]}
             </address>
             <p className={styles.hours}>
-              <Icon name={content.hours.icon} size={16} />
+              <Icon name={content.hours.icon} size="sm" />
               <span className="type-body-sm">{site.hours}</span>
             </p>
           </div>
@@ -42,7 +42,7 @@ export function SiteFooter({ site, content }: SiteFooterProps) {
           <div className={styles.column}>
             <h2 className={cx('type-label-eyebrow', styles.accent)}>{content.contact.heading}</h2>
             <a className={cx('type-body-sm', styles.contactLink)} href={telLink(site.phone.dial)}>
-              <Icon name={content.contact.phoneIcon} size={16} tone="accent" />
+              <Icon name={content.contact.phoneIcon} size="sm" tone="accent" />
               <span>{site.phone.display}</span>
             </a>
             <a
@@ -51,7 +51,7 @@ export function SiteFooter({ site, content }: SiteFooterProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icon name={content.contact.whatsappIcon} size={16} tone="accent" />
+              <Icon name={content.contact.whatsappIcon} size="sm" tone="accent" />
               <span>{content.contact.whatsappLabel}</span>
             </a>
             <span className={cx('type-label-sm', styles.email)}>
