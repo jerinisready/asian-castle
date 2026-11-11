@@ -35,7 +35,6 @@ export const ICON_NAMES = [
   'open_in_new',
   'outdoor_grill',
   'palette',
-  'person',
   'photo_camera',
   'remove',
   'restaurant',

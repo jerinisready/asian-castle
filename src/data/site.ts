@@ -55,7 +55,6 @@ export const header: HeaderContent = {
   ],
   reserve: { label: 'Reserve Table', icon: 'calendar_today', href: `#${sectionIds.reservations}` },
   cartLabel: 'Bespoke Banquet Cart',
-  accountLabel: 'Account',
   skipLink: { label: 'Skip to the menu', href: `#${sectionIds.menu}` },
   mobileNav: {
     openLabel: 'Open navigation',
@@ -91,10 +90,7 @@ export const footer: FooterContent = {
     description: 'Direct-hearth curations delivered across Sharjah & Dubai via verified culinary partners.',
     items: ['Talabat Fine', 'Noon Food', 'Direct Dispatch'],
   },
-  copyright: '© 2025 Asian Castle Restaurant L.L.C. Sharjah, UAE. All Rights Reserved.',
-  legalLinks: [
-    { label: 'Provenance & Dietary', href: '#' },
-    { label: 'Sanctuary Protocol', href: '#' },
-    { label: 'Privacy Policy', href: '#' },
-  ],
+  copyright: `© ${new Date().getFullYear()} Asian Castle Restaurant L.L.C. Sharjah, UAE. All Rights Reserved.`,
+  // These pages don't exist yet; add `href` when each is published and the link appears.
+  legalLinks: [{ label: 'Provenance & Dietary' }, { label: 'Sanctuary Protocol' }, { label: 'Privacy Policy' }],
 }

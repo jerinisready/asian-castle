@@ -11,6 +11,8 @@ interface SiteFooterProps {
 }
 
 export function SiteFooter({ site, content }: SiteFooterProps) {
+  const legalLinks = content.legalLinks.filter((link): link is { label: string; href: string } => Boolean(link.href))
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -54,9 +56,12 @@ export function SiteFooter({ site, content }: SiteFooterProps) {
               <Icon name={content.contact.whatsappIcon} size="sm" tone="accent" />
               <span>{content.contact.whatsappLabel}</span>
             </a>
-            <span className={cx('type-label-sm', styles.email)}>
+            <a
+              className={cx('type-label-sm', styles.contactLink, styles.email)}
+              href={`mailto:${site.privateDiningEmail}`}
+            >
               {content.contact.emailLabel} {site.privateDiningEmail}
-            </span>
+            </a>
           </div>
 
           <div className={styles.column}>
@@ -72,13 +77,15 @@ export function SiteFooter({ site, content }: SiteFooterProps) {
 
         <div className={styles.bottom}>
           <span className={cx('type-body-sm', styles.copyright)}>{content.copyright}</span>
-          <nav aria-label="Legal" className={cx('type-label-sm', styles.legal)}>
-            {content.legalLinks.map((link) => (
-              <a key={link.label} href={link.href} className={styles.legalLink}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          {legalLinks.length > 0 && (
+            <nav aria-label="Legal" className={cx('type-label-sm', styles.legal)}>
+              {legalLinks.map((link) => (
+                <a key={link.label} href={link.href} className={styles.legalLink}>
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          )}
         </div>
       </div>
     </footer>

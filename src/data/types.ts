@@ -18,6 +18,12 @@ export interface LinkAction extends IconLabel {
   href: string
 }
 
+/** A label that becomes a link once a confirmed URL is set; without `href` it renders as plain text. */
+export interface OptionalLink {
+  label: string
+  href?: string
+}
+
 /** Opens WhatsApp with `message` prefilled. */
 export interface WhatsAppAction extends IconLabel {
   message: string
@@ -82,7 +88,6 @@ export interface HeaderContent {
   nav: NavItem[]
   reserve: LinkAction
   cartLabel: string
-  accountLabel: string
   /** First focusable element on the page. */
   skipLink: { label: string; href: string }
   /** Navigation sheet shown below 1280px. */
@@ -112,7 +117,8 @@ export interface HeroContent {
   reserveAction: LinkAction
   menuAction: LinkAction
   whatsappAction: WhatsAppAction
-  partners: { label: string; items: string[] }
+  /** Delivery platforms. Each chip links to Asian Castle's listing once its URL is confirmed. */
+  partners: { label: string; items: OptionalLink[] }
   showcase: {
     image: ImageAsset
     crestIcon: IconName
@@ -152,7 +158,8 @@ export interface SignatureContent {
   title: { lead: string; accent: string }
   specs: SignatureSpec[]
   addAction: IconLabel & { item: TableItem }
-  sidesAction: IconLabel & { message: string }
+  /** Toggles an inline list of what comes with the pot. */
+  sidesAction: IconLabel & { intro: string; items: string[] }
 }
 
 /* ── Dishes ───────────────────────────────────────── */
@@ -293,5 +300,6 @@ export interface FooterContent {
   contact: { heading: string; phoneIcon: IconName; whatsappLabel: string; whatsappIcon: IconName; emailLabel: string }
   partners: { heading: string; description: string; items: string[] }
   copyright: string
-  legalLinks: Array<{ label: string; href: string }>
+  /** Links without `href` are hidden until the page exists. */
+  legalLinks: OptionalLink[]
 }

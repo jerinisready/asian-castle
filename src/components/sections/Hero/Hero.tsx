@@ -96,8 +96,8 @@ export function Hero({ id, content, whatsappNumber }: HeroProps) {
             <span className={cx('type-label-sm', styles.partnersLabel)}>{partners.label}</span>
             <div className={styles.partnerList}>
               {partners.items.map((partner) => (
-                <Chip key={partner} tone="highest" interactive>
-                  {partner}
+                <Chip key={partner.label} tone="highest" href={partner.href}>
+                  {partner.label}
                 </Chip>
               ))}
             </div>

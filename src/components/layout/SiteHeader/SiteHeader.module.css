@@ -134,19 +134,6 @@
   font-weight: var(--weight-bold);
 }
 
-/* Decorative (no account feature yet); hidden on phones to keep the brand on one line. */
-.avatar {
-  width: var(--size-control-sm);
-  height: var(--size-control-sm);
-  margin-left: var(--space-xs);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-pill);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-}
-
 @media (min-width: 640px) {
   .brand {
     min-width: 280px;
@@ -154,10 +141,6 @@
 
   .actions .reserve {
     display: inline-flex;
-  }
-
-  .avatar {
-    display: flex;
   }
 }
 

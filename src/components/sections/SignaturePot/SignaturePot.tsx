@@ -1,3 +1,4 @@
+import { useId, useState } from 'react'
 import type { SignatureContent, TableItem } from '../../../data/types'
 import { cx } from '../../../utils/cx'
 import { DumSteam } from '../../effects/DumSteam/DumSteam'
@@ -19,6 +20,8 @@ interface SignaturePotProps {
 /** The house biryani: steaming pot on one side, its story and specs on the other. */
 export function SignaturePot({ id, content, onAddItem }: SignaturePotProps) {
   const { panel, title, specs, addAction, sidesAction } = content
+  const [sidesOpen, setSidesOpen] = useState(false)
+  const sidesId = useId()
 
   return (
     <Section id={id} tone="surface" className={styles.section} aria-labelledby="signature-title">
@@ -69,10 +72,27 @@ export function SignaturePot({ id, content, onAddItem }: SignaturePotProps) {
               <Icon name={addAction.icon} size="md" tone="accent" />
               <span>{addAction.label}</span>
             </Button>
-            <Button variant="secondary" onClick={() => window.alert(sidesAction.message)}>
+            <Button
+              variant="secondary"
+              className={styles.sidesToggle}
+              aria-expanded={sidesOpen}
+              aria-controls={sidesId}
+              onClick={() => setSidesOpen((open) => !open)}
+            >
               <Icon name={sidesAction.icon} size="md" />
               <span>{sidesAction.label}</span>
             </Button>
+          </div>
+
+          <div id={sidesId} hidden={!sidesOpen} className={styles.sides}>
+            <p className={cx('type-body-sm', styles.sidesIntro)}>{sidesAction.intro}</p>
+            <ul className={cx('type-body-sm', styles.sidesList)}>
+              {sidesAction.items.map((item) => (
+                <li key={item} className={styles.sidesItem}>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Container>
